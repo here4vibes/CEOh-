@@ -31,6 +31,10 @@ export const CEO: SeatConfig = {
   resultCapture: "The Street loved it. “You’re fired,” to a few thousand. Stock popped.",
   resultProtect: "Analysts called it undisciplined. The stock slid; the board noticed.",
   outLabel: "FALLOUT THIS QUARTER",
+  closingQuestion: {
+    fired: "Someone else came in and did it anyway. What would have had to change for that not to be an option?",
+    ended: "The numbers went up. Did anyone's life get better?",
+  },
   turns: [
     {
       y: 1981,

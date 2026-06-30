@@ -541,6 +541,61 @@
   color: var(--muted);
 }
 
+/* closing question — appears on all terminal screens */
+.closing-question {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--phosphor);
+  font-style: italic;
+  border-top: 1px solid var(--edge);
+  padding-top: 14px;
+  margin: 8px 0 18px;
+}
+
+/* hub — career map between seats */
+.hub {
+  margin-top: 20px;
+  padding: 22px 24px 26px;
+  background: linear-gradient(180deg, rgba(246, 199, 96, 0.05), transparent);
+  border: 1px solid var(--edge);
+  border-radius: 12px;
+}
+.hub-tag {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.hub-title {
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  font-size: clamp(22px, 3.5vw, 32px);
+  color: var(--gold);
+  margin: 0 0 14px;
+  text-shadow: 0 0 22px rgba(246, 199, 96, 0.22);
+}
+.hub-stats {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin: 18px 0 22px;
+  align-items: baseline;
+}
+.hub-stat-label {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8.5px;
+  letter-spacing: 1.5px;
+  color: var(--muted);
+  margin-bottom: 3px;
+}
+.hub-stat-value {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1;
+}
+
 /* fired / record */
 .fired-title {
   font-family: "Oswald", sans-serif;

@@ -23,22 +23,25 @@ interface ConsequenceView {
   resLine: string;
 }
 
-type Phase = "intro" | "desk" | "airing" | "promoted" | "aired" | "fired" | "ended";
+type Phase = "intro" | "desk" | "airing" | "promoted" | "aired" | "fired" | "electionLost" | "ended";
 
-const FRESH_RUN: SeatRunState = { turn: 0, score: 0, board: 55, fired: false, ended: false };
+const FRESH_RUN: SeatRunState = { turn: 0, score: 0, board: 55, fired: false, ended: false, electionLost: false };
 
 interface SeatProps {
   cfg: SeatConfig;
+  onSeatComplete: () => void;
+  onRestart: () => void;
+  /** CTA label on the final ended screen. */
+  completeCta?: string;
 }
 
-export function Seat({ cfg }: SeatProps) {
+export function Seat({ cfg, onSeatComplete, onRestart, completeCta = "Play again ›" }: SeatProps) {
   const reduced = usePrefersReducedMotion();
   const population = useGameStore((s) => s.population);
   const character = useGameStore((s) => s.character);
   const run = useGameStore((s) => s.seatRuns[cfg.id]) ?? FRESH_RUN;
   const resolveMove = useGameStore((s) => s.resolveMove);
   const advance = useGameStore((s) => s.advance);
-  const newGame = useGameStore((s) => s.newGame);
 
   const meta = useMemo(() => buildMeta(cfg.lives), [cfg]);
   const seatRgb = useMemo(() => hexRgb(cfg.scoreColor), [cfg]);
@@ -63,6 +66,7 @@ export function Seat({ cfg }: SeatProps) {
   const capacity = avgCap(cfg.mode, population);
   const lit = litCount(cfg.mode, population);
   const startSupport = clamp01(character.fame * 0.0026 + character.money * 0.0016);
+  const avgVote = cfg.mode === "vote" ? population.reduce((s, h) => s + h.vote, 0) / population.length : 0;
 
   function pickPreset(option: PresetOption) {
     setLead(option);
@@ -103,7 +107,9 @@ export function Seat({ cfg }: SeatProps) {
 
   function handleAdvance() {
     const nextRun = advance(cfg.id);
-    if (nextRun.fired) {
+    if (nextRun.electionLost) {
+      setPhase("electionLost");
+    } else if (nextRun.fired) {
       setPhase("fired");
     } else if (nextRun.ended) {
       setPhase("ended");
@@ -114,16 +120,6 @@ export function Seat({ cfg }: SeatProps) {
     }
   }
 
-  function handleRestart() {
-    newGame();
-    setPhase(cfg.mode === "vote" ? "intro" : "desk");
-    setLead(null);
-    setDial(50);
-    setFocus(null);
-    setCons(null);
-    setPromo(null);
-  }
-
   const focused = focus != null ? { ...population[focus], ...meta[focus] } : null;
   const focusedLit = focused ? litOf(cfg.mode, focused) : 0;
   const focusedTier = tierOf(focusedLit);
@@ -131,7 +127,7 @@ export function Seat({ cfg }: SeatProps) {
   return (
     <div className="shell">
       <Dossier character={character} population={population} cfg={cfg} avgCap={capacity} board={run.board} />
-      <button className="back-btn" onClick={handleRestart}>
+      <button className="back-btn" onClick={onRestart}>
         ‹ begin again
       </button>
 
@@ -231,7 +227,9 @@ export function Seat({ cfg }: SeatProps) {
           )}
         </div>
         <div className="chyron">
-          <span className="chyron-tag">{data && data.y > 1900 ? data.y : cfg.mode === "vote" ? `STEP ${run.turn + 1}` : "—"}</span>
+          <span className="chyron-tag">
+            {data && data.y > 1900 ? data.y : cfg.mode === "vote" ? `STEP ${run.turn + 1}` : "—"}
+          </span>
           <span className="chyron-text">{data ? data.ch : ""}</span>
         </div>
       </div>
@@ -248,7 +246,11 @@ export function Seat({ cfg }: SeatProps) {
             <p className="lede muted small">
               The ones easiest to win are the ones you hurt. Grievance moves the precarious fastest.
             </p>
-            <button className="primary-btn" style={{ borderColor: cfg.scoreColor, color: cfg.scoreColor }} onClick={() => setPhase("desk")}>
+            <button
+              className="primary-btn"
+              style={{ borderColor: cfg.scoreColor, color: cfg.scoreColor }}
+              onClick={() => setPhase("desk")}
+            >
               Descend the escalator ›
             </button>
           </div>
@@ -385,6 +387,21 @@ export function Seat({ cfg }: SeatProps) {
           </div>
         )}
 
+        {phase === "electionLost" && (
+          <div className="desk-full">
+            <div className="fired-title" style={{ color: "var(--air)" }}>THE RACE IS CALLED</div>
+            <p className="lede">
+              You finished with{" "}
+              <b style={{ color: cfg.scoreColor }}>{Math.round(avgVote * 100)}%</b> of the vote.{" "}
+              {lit}/{N} households {cfg.litLabel}.
+            </p>
+            <p className="closing-question">{cfg.closingQuestion.electionLost}</p>
+            <button className="primary-btn" onClick={onSeatComplete}>
+              {completeCta}
+            </button>
+          </div>
+        )}
+
         {phase === "ended" && (
           <div className="desk-full">
             <div className="record-title" style={{ color: cfg.scoreColor }}>
@@ -396,8 +413,11 @@ export function Seat({ cfg }: SeatProps) {
               <Stat n={cfg.ranks[rankIndex].title.split(",")[0]} l="final title" c="var(--gold)" small />
             </div>
             <p className="lede muted small">By every number they gave you, an exceptional run.</p>
-            <button className="primary-btn gold" onClick={handleRestart}>
-              Begin again ›
+            <p className="closing-question">
+              {run.fired ? cfg.closingQuestion.fired : cfg.closingQuestion.ended}
+            </p>
+            <button className="primary-btn gold" onClick={onSeatComplete}>
+              {completeCta}
             </button>
           </div>
         )}

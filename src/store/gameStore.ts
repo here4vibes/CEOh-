@@ -14,7 +14,7 @@ function addStat(character: Character, key: StatKey, amt: number): Character {
 }
 
 function freshRun(): SeatRunState {
-  return { turn: 0, score: 0, board: 55, fired: false, ended: false };
+  return { turn: 0, score: 0, board: 55, fired: false, ended: false, electionLost: false };
 }
 
 interface GameStore {
@@ -119,6 +119,14 @@ export const useGameStore = create<GameStore>((set, get) => ({
       population = fastForwardFired(cfg, population, nextRun.turn, rng);
       nextRun.fired = true;
       nextRun.ended = true;
+    } else if (cfg.electionGate && nextRun.turn === cfg.electionGate.turnIndex) {
+      const avgVote = population.reduce((s, h) => s + h.vote, 0) / population.length;
+      if (avgVote < cfg.electionGate.threshold) {
+        nextRun.electionLost = true;
+        nextRun.ended = true;
+      } else {
+        nextRun.turn += 1;
+      }
     } else if (nextRun.turn + 1 >= cfg.turns.length) {
       nextRun.ended = true;
     } else {

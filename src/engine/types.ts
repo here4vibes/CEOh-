@@ -53,6 +53,9 @@ export interface SeatConfig {
   resultProtect: string;
   outLabel: string;
   turns: SeatTurn[];
+  closingQuestion: { fired: string; ended: string; electionLost?: string };
+  /** Politician only: after this turn index, check avg vote against threshold. */
+  electionGate?: { turnIndex: number; threshold: number };
 }
 
 export interface MoveLogEntry {
@@ -68,6 +71,7 @@ export interface SeatRunState {
   board: number;
   fired: boolean;
   ended: boolean;
+  electionLost: boolean;
 }
 
 export interface SeatResult {

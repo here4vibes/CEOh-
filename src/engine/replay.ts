@@ -38,7 +38,7 @@ export function replay(seed: number, moveLog: MoveLogEntry[]): ReplayState {
 
     let run = seatRuns[entry.seatId];
     if (!run) {
-      run = { turn: 0, score: 0, board: 55, fired: false, ended: false };
+      run = { turn: 0, score: 0, board: 55, fired: false, ended: false, electionLost: false };
       seatRuns[entry.seatId] = run;
       if (cfg.mode === "vote") {
         const startSupport = clamp01(character.fame * 0.0026 + character.money * 0.0016);
@@ -62,6 +62,14 @@ export function replay(seed: number, moveLog: MoveLogEntry[]): ReplayState {
       population = fastForwardFired(cfg, population, run.turn, rng);
       run.fired = true;
       run.ended = true;
+    } else if (cfg.electionGate && run.turn === cfg.electionGate.turnIndex) {
+      const avgVote = population.reduce((s, h) => s + h.vote, 0) / population.length;
+      if (avgVote < cfg.electionGate.threshold) {
+        run.electionLost = true;
+        run.ended = true;
+      } else {
+        run.turn += 1;
+      }
     } else if (run.turn + 1 >= cfg.turns.length) {
       run.ended = true;
     } else {

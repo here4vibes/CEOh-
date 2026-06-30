@@ -1,7 +1,8 @@
 import type { SeatConfig } from "../types";
 import { CEO } from "./ceo";
+import { POLITICIAN } from "./politician";
 
-// M1 ships the CEO seat only. The remaining five (M2+) register here as they're ported.
-export const SEATS: Record<string, SeatConfig> = { ceo: CEO };
+// M2 ships CEO + Politician. Remaining four seats (Economist, Counsel, Judge, Culture) are M5.
+export const SEATS: Record<string, SeatConfig> = { ceo: CEO, politician: POLITICIAN };
 
-export const SEAT_ORDER = Object.keys(SEATS);
+export const SEAT_ORDER = ["ceo", "politician"];
