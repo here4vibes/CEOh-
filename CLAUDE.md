@@ -69,7 +69,8 @@ that become the thing it indicts. Competition must be commentary.
     rare flex. This inversion turns the competitive instinct into the lesson.
 - **North star (post-validation, M5):** async multiplayer — each player takes a different seat
   affecting ONE shared country; the emergent national outcome is the tragedy-of-the-commons result,
-  proven by real humans each being locally rational. No scripted NPCs needed.
+  proven by real humans each being locally rational. Unfilled or fired seats run on NPC. Full
+  design in §11.
 
 ## 5. Determinism (required for fair weekly leaderboards)
 
@@ -97,8 +98,9 @@ that become the thing it indicts. Competition must be commentary.
 ## 7. Stack
 
 - **Vite + React + TypeScript**, **Zustand** for state, plain CSS (or vanilla-extract). No engine.
-- Leaderboard backend: **Supabase** (Postgres + edge function for replay-verification) or a small
-  serverless endpoint + KV. Keep it optional behind a flag so the game runs fully offline too.
+- Leaderboard + multiplayer backend: **Neon** (serverless Postgres) + a small serverless function
+  layer for replay-verification and the daily multiplayer resolution job (see §11). Keep it
+  optional behind a flag so the solo game runs fully offline too.
 - Deploy: static web build -> **itch.io** (free HTML5 demo, the front door) + embed on a landing
   page. Stand up a **Steam "Coming Soon"** page in parallel to capture wishlists. Tauri desktop
   wrapper only later, if validated.
@@ -124,7 +126,7 @@ that become the thing it indicts. Competition must be commentary.
   export + share text); **dual leaderboard** (Climb / Steward) with server-side replay verification;
   analytics; itch.io web build; Steam Coming Soon page. This is the demo that tests whether it spreads.
 - **M5 — post-validation only.** Remaining four seats (Economist, Counsel, Judge, Culture as full
-  configs); async multiplayer shared-country.
+  configs); async multiplayer shared-country per the design in §11.
 
 ## 9. Pre-committed launch gate (decide numbers BEFORE shipping)
 
@@ -140,3 +142,71 @@ rate > N%. Below that, re-cut the hook or shelve." Fill in X/Y/Z/N now; don't ra
   comes from households being legible as specific named people.
 - Keep the competitive layer as commentary (the Steward board), never a dopamine sugar-high stapled
   on — that would make the game the thing it criticizes.
+
+## 11. Shared-state multiplayer (M5 design)
+
+A **state** is a private lobby of up to 6 players (one per seat: Economist, Counsel, Judge, CEO,
+Culture, Politician), all reading and writing ONE shared `population[112]` for the week. This is
+the §4 north star, scoped to a buildable spec. Solo play is untouched — this is an additional mode.
+
+**Ownership model.** Per-seat character stats (money/fame/power), shared population. Five
+different people occupy five different seats *simultaneously*, so there is no single Sterling to
+carry stats between them — that would force players to fight over one stat block and breaks the
+"no villain, every seat is locally rational" thesis. What *does* carry between seats is
+institutional residue: one seat's extraction lowers the population floor every other seat inherits.
+
+**Weekly cycle.**
+- Monday: state opens on that week's seed (same ISO-week seed as solo weekly mode, §5). Empty
+  seats and any seat without a claimed player default to NPC control from day one.
+- Five decision rounds, Monday–Friday, one per seat per day.
+- Each day, every seat-holder submits a **sealed bid** (their chosen option + dial) before a daily
+  deadline. Bids are invisible to other players until resolution — nobody can react to a co-state's
+  move same-day.
+- At rollover, the day's bids **resolve together** and the result becomes visible the next morning.
+  This is consequence fog raised to the state level: you commit blind to today's move without
+  having seen the full impact of yesterday's other seats yet, same as the solo "last period's
+  numbers" mechanic.
+- No submission by the deadline = that seat auto-resolves to its NPC strategy for that day only
+  (not a firing) — the seat doesn't pause for an absent player.
+
+**Resolution must be simultaneous, not sequential.** All seats' moves for day N are computed as
+deltas off the *same* pre-day population snapshot, then summed and applied once. Resolving seat by
+seat would let whichever seat resolves first work off a fresher population than the others —
+unfair and order-dependent. This is the one real change needed in the engine: `resolveMove` /
+`replay` currently apply one seat's move at a time; multiplayer needs a batched variant
+(snapshot → N parallel deltas → sum → apply once).
+
+**The replacement rule, live.** A seat that crosses the fire threshold during a day's resolution
+flips to NPC control (harsher strategy, per §2's replacement rule) for the remainder of the week —
+exactly the solo-mode mechanic, just visible to the other four players in real time instead of
+ending their own run. Same for the Politician's election gate (`electionGate`, M2): if that seat's
+avg vote share is under the bar on election day, the state's campaign is over for that seat
+regardless of the other seats' standing.
+
+**NPC strategy.** Reuse `scripts/harness.ts`'s `pickMove(strategy, turnIndex, options)` — it
+already encodes all-extract / all-restraint / mixed heuristics — as the live decision-maker for
+unfilled seats, no-show days, and post-firing takeovers.
+
+**Two leaderboards per week, same Climb/Steward inversion as solo play (§4), at two scopes:**
+- **State leaderboard** (collective, 5-player groups vs other states). Default view is
+  Steward-scored — civic capacity + lit households preserved across all seats at week's end — so
+  the headline state-vs-state board doesn't become the extraction race the game critiques. Climb
+  ("most extracted, collectively") is the shadow board, same inversion trick as solo.
+- **Individual leaderboard** (per player, per seat type, across all states that week) — "best CEO
+  this week," Climb/Steward split, same as solo scoring.
+
+**Resolution job, conceptually** (runs once per state per day, after the deadline):
+1. Gather day-N bids per seat; missing bids default to NPC pick.
+2. Snapshot the population as of end of day N-1.
+3. Compute each seat's delta independently off that snapshot (reuse the pure resolve functions
+   already in `replay.ts` — do not reimplement them server-side).
+4. Sum all deltas, apply once → day-N population.
+5. Advance each seat's `SeatRunState` (turn/score/board); check fire threshold and election gate.
+6. Any newly-fired seat → mark NPC-controlled for the rest of the week.
+7. Persist the day's full move log (all seats) — this is the literal cheat-resistant audit trail
+   §5 already specifies for solo play, just keyed by state+day instead of by single player.
+8. Reveal day-N results to all players starting day N+1.
+
+This reuses the seed+moveLog replay architecture built in M1 almost unchanged — multiplayer
+resolution is "replay, but the moveLog for a given day is contributed by N independent players
+instead of one," fed into the same deterministic engine.
