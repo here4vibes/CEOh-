@@ -12,6 +12,7 @@ export const CEO: SeatConfig = {
   mode: "extract",
   stat: "money",
   statScale: 0.06,
+  sideStats: { fame: 0.018 },
   scoreColor: GREEN,
   litColor: WARM,
   scoreLabel: "SHARE PRICE",

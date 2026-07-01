@@ -20,6 +20,7 @@ export interface AirResult {
   population: Household[];
   scoreGain: number;
   statGain: number;
+  sideStatGains: Partial<Record<string, number>>;
   capDeltaPct: number;
   civDeltaPct: number;
   gapDeltaPct: number;
@@ -48,10 +49,18 @@ export function airMove(
 
   const after = { cap: avgCap(cfg.mode, next), civ: avgCiv(next), econ: avgEcon(next) };
 
+  const sideStatGains: Partial<Record<string, number>> = {};
+  if (cfg.sideStats) {
+    for (const [key, scale] of Object.entries(cfg.sideStats)) {
+      sideStatGains[key] = Math.round(gain * scale * 10) / 10;
+    }
+  }
+
   return {
     population: next,
     scoreGain: Math.round(gain),
     statGain: Math.round(gain * cfg.statScale * 10) / 10,
+    sideStatGains,
     capDeltaPct: Math.round((after.cap - before.cap) * 100),
     civDeltaPct: Math.round((after.civ - before.civ) * 100),
     gapDeltaPct: Math.round((before.econ - after.econ) * 100),

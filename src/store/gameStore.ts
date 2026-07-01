@@ -89,6 +89,9 @@ export const useGameStore = create<GameStore>((set, get) => ({
     const result = airMove(cfg, population, move, dialValue, rng);
     population = result.population;
     character = addStat(character, cfg.stat, result.statGain);
+    for (const [key, gain] of Object.entries(result.sideStatGains)) {
+      character = addStat(character, key as StatKey, gain ?? 0);
+    }
 
     const delta = boardDelta(move.type, result.capDeltaPct);
     const nextRun: SeatRunState = {

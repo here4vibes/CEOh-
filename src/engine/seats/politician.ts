@@ -12,6 +12,7 @@ export const POLITICIAN: SeatConfig = {
   mode: "vote",
   stat: "power",
   statScale: 1.4,
+  sideStats: { fame: 0.45 },
   scoreColor: RED,
   litColor: BLUE,
   scoreLabel: "SUPPORT",

@@ -54,6 +54,8 @@ export interface SeatConfig {
   outLabel: string;
   /** Paragraphs shown on the intro screen before the first turn. */
   intro?: string[];
+  /** Secondary stats that also accumulate each move, keyed to StatKey, value is the scale factor. */
+  sideStats?: Partial<Record<StatKey, number>>;
   turns: SeatTurn[];
   closingQuestion: { fired: string; ended: string; electionLost?: string };
   /** Politician only: after this turn index, check avg vote against threshold. */

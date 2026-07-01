@@ -54,6 +54,9 @@ export function replay(seed: number, moveLog: MoveLogEntry[]): ReplayState {
     population = air.population;
     run.score += air.scoreGain;
     character = addStat(character, cfg.stat, air.statGain);
+    for (const [key, gain] of Object.entries(air.sideStatGains)) {
+      character = addStat(character, key as StatKey, gain ?? 0);
+    }
 
     const delta = boardDelta(entry.move.type, air.capDeltaPct);
     run.board = Math.max(0, Math.min(100, run.board + delta));
