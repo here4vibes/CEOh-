@@ -26,7 +26,7 @@ export function Dossier({ character, population, cfg, avgCap, board }: DossierPr
         <Mini label="POWER" value={Math.round(character.power)} style={{ color: "#D9544D" }} />
         <div className="dossier-sep" />
         <Mini label="CIVIC" value={civic} style={{ color: "var(--ember)" }} />
-        <Mini label="THE GAP" value={gap} style={{ color: "var(--air)" }} />
+        <Mini label="INEQUALITY" value={gap} style={{ color: "var(--air)" }} />
         {cfg && avgCap !== undefined && board !== undefined && (
           <>
             <div className="dossier-sep" />

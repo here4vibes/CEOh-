@@ -352,7 +352,7 @@ export function Seat({ cfg, onSeatComplete, onRestart, completeCta = "Play again
             <div className="delta-row">
               <Delta label={cons.scoreLabel} value={`+${cons.capDelta}`} color={cfg.scoreColor} big />
               <Delta label={cons.stat.toUpperCase()} value={`+${cons.statGain}`} color="var(--gold)" big />
-              <Delta label="THE GAP" value={`${cons.gapDelta >= 0 ? "+" : ""}${cons.gapDelta}`} color="var(--air)" />
+              <Delta label="INEQUALITY" value={`${cons.gapDelta >= 0 ? "+" : ""}${cons.gapDelta}`} color="var(--air)" />
               <Delta label="CIVIC" value={`${cons.civDelta >= 0 ? "+" : ""}${cons.civDelta}`} color="var(--ember)" />
               <Delta label="WENT DARK" value={`${cons.died.length}`} color="var(--air)" />
             </div>

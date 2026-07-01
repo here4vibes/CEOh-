@@ -269,12 +269,11 @@
 }
 .chyron {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 10px;
   margin-top: 6px;
   border-top: 1px solid var(--edge);
   padding: 9px 2px;
-  overflow: hidden;
 }
 .chyron-tag {
   font-family: "IBM Plex Mono", monospace;
@@ -292,9 +291,7 @@
   font-weight: 500;
   font-size: 13px;
   letter-spacing: 2.5px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.4;
 }
 
 /* desk / move picker */
