@@ -381,8 +381,8 @@ export function Seat({ cfg, onSeatComplete, onRestart, completeCta = "Play again
             {run.board < FIRE + 15 && run.board >= FIRE && (
               <p className="board-warning">
                 {run.board < FIRE + 5
-                  ? "An urgent call from the chair. The board meets this week."
-                  : "The board sent a letter. They're watching the next decision closely."}
+                  ? (cfg.boardPressure?.[0] ?? "An urgent call from the chair. The board meets this week.")
+                  : (cfg.boardPressure?.[1] ?? "The board sent a letter. They're watching the next decision closely.")}
               </p>
             )}
             {cons.died.length > 0 && (
@@ -404,10 +404,10 @@ export function Seat({ cfg, onSeatComplete, onRestart, completeCta = "Play again
 
         {phase === "fired" && (
           <div className="desk-full">
-            <div className="fired-title">REPLACED</div>
+            <div className="fired-title">{cfg.firedTitle ?? "REPLACED"}</div>
             <p className="lede">
-              Your restraint cost the board its confidence. They brought in someone who wouldn&apos;t hesitate, and
-              it played out without you — faster. You left as {cfg.ranks[rankIndex].title}.
+              {cfg.firedBody ??
+                `Your restraint cost the board its confidence. They brought in someone who wouldn't hesitate, and it played out without you — faster. You left as ${cfg.ranks[rankIndex].title}.`}
             </p>
             <button className="primary-btn" onClick={() => setPhase("ended")}>
               See the record ›

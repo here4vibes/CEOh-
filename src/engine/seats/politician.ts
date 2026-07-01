@@ -13,6 +13,13 @@ export const POLITICIAN: SeatConfig = {
   stat: "power",
   statScale: 1.4,
   sideStats: { fame: 0.45 },
+  boardLabel: "PARTY",
+  firedTitle: "DROPPED",
+  firedBody: "The party machine withdrew its support. Someone else stepped up with the same message and fewer principles — and the movement went on without you.",
+  boardPressure: [
+    "The donor network sent a message. They want to see different numbers at the next rally.",
+    "The party chair called. They're watching the next event very closely.",
+  ],
   scoreColor: RED,
   litColor: BLUE,
   scoreLabel: "SUPPORT",

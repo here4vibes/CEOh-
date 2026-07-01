@@ -56,6 +56,14 @@ export interface SeatConfig {
   intro?: string[];
   /** Secondary stats that also accumulate each move, keyed to StatKey, value is the scale factor. */
   sideStats?: Partial<Record<StatKey, number>>;
+  /** Label for the confidence meter in the dossier (default "BOARD"). */
+  boardLabel?: string;
+  /** Heading on the termination screen (default "REPLACED"). */
+  firedTitle?: string;
+  /** Body on the termination screen. */
+  firedBody?: string;
+  /** [approaching-fire, near-fire] pressure warning lines. */
+  boardPressure?: [string, string];
   turns: SeatTurn[];
   closingQuestion: { fired: string; ended: string; electionLost?: string };
   /** Politician only: after this turn index, check avg vote against threshold. */

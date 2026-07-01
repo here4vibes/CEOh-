@@ -31,7 +31,7 @@ export function Dossier({ character, population, cfg, avgCap, board }: DossierPr
           <>
             <div className="dossier-sep" />
             <Mini label={cfg.scoreLabel} value={Math.round(avgCap * 100)} big style={{ color: cfg.scoreColor }} />
-            <Mini label="BOARD" value={board} style={{ color: board < FIRE + 12 ? "var(--air)" : "var(--muted)" }} />
+            <Mini label={cfg.boardLabel ?? "BOARD"} value={board} style={{ color: board < FIRE + 12 ? "var(--air)" : "var(--muted)" }} />
           </>
         )}
       </div>
