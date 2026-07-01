@@ -477,6 +477,15 @@
   margin: 0 0 16px;
 }
 
+.board-warning {
+  font-size: 13px;
+  color: var(--air);
+  border-left: 2px solid var(--air);
+  padding-left: 10px;
+  margin: 4px 0 10px;
+  font-style: italic;
+}
+
 /* consequence panel */
 .cons-head {
   font-family: "IBM Plex Mono", monospace;

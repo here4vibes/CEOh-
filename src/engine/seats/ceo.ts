@@ -38,74 +38,74 @@ export const CEO: SeatConfig = {
   turns: [
     {
       y: 1981,
-      ch: "A NEW DOCTRINE · MAXIMIZE THE SHARE PRICE",
+      ch: "A NEW DOCTRINE · THE SHARE PRICE IS THE ONLY DUTY",
       o: [
-        { id: "a", name: "Reinvest in the plant", glyph: "◍", type: "protect", pull: 0.26 },
+        { id: "a", name: "Run it like workers are the point", glyph: "◍", type: "protect", pull: 0.26 },
         { id: "b", name: "The first buyback", glyph: "$", type: "capture", pull: 0.55 },
       ],
     },
     {
       y: 1985,
-      ch: "A RAIDER IS CIRCLING",
+      ch: "A RAIDER IS CIRCLING · HE WANTS YOUR BEST DIVISIONS",
       o: [
-        { id: "a", name: "Defend the jobs", glyph: "◍", type: "protect", pull: 0.3 },
-        { id: "b", name: "Cut deep to fight him off", glyph: "✂", type: "capture", pull: 0.7 },
+        { id: "a", name: "Tell the board the jobs stay", glyph: "◍", type: "protect", pull: 0.3 },
+        { id: "b", name: "Cut deep, strip it clean", glyph: "✂", type: "capture", pull: 0.7 },
       ],
     },
     {
       y: 1991,
-      ch: "THE PLANT COSTS LESS OVERSEAS",
+      ch: "THE PLANT COSTS LESS IN MEXICO · THE ANALYSTS ARE CLEAR",
       o: [
-        { id: "a", name: "Keep it in the town", glyph: "◍", type: "protect", pull: 0.3 },
-        { id: "b", name: "Move it offshore", glyph: "✈", type: "capture", pull: 0.76 },
+        { id: "a", name: "The town needs it to stay", glyph: "◍", type: "protect", pull: 0.3 },
+        { id: "b", name: "Move it offshore, take the credit", glyph: "✈", type: "capture", pull: 0.76 },
       ],
     },
     {
       y: 1997,
-      ch: "DOWNSIZE AND DISTRIBUTE",
+      ch: "THE BEST DECADE IN AMERICAN BUSINESS",
       o: [
-        { id: "a", name: "Profit-share with workers", glyph: "◍", type: "protect", pull: 0.32 },
-        { id: "b", name: "Layoffs, raise the dividend", glyph: "✂", type: "capture", pull: 0.82 },
+        { id: "a", name: "Share it with the floor", glyph: "◍", type: "protect", pull: 0.32 },
+        { id: "b", name: "The Street wants to see the number", glyph: "✂", type: "capture", pull: 0.82 },
       ],
     },
     {
       y: 2001,
-      ch: "THE DIP · PROTECT THE QUARTER",
+      ch: "THE DOT-COM CRASH · PROTECT THE QUARTER",
       o: [
-        { id: "a", name: "Hold headcount", glyph: "◍", type: "protect", pull: 0.3 },
-        { id: "b", name: "Cut 10%, beat estimates", glyph: "✂", type: "capture", pull: 0.84 },
+        { id: "a", name: "Don't use the people as the buffer", glyph: "◍", type: "protect", pull: 0.3 },
+        { id: "b", name: "Cut 12%. Beat every estimate.", glyph: "✂", type: "capture", pull: 0.84 },
       ],
     },
     {
       y: 2008,
-      ch: "THE CRASH · A BAILOUT ARRIVES",
+      ch: "THE CRASH · CONGRESS IS WRITING THE CHECK",
       o: [
-        { id: "a", name: "Keep everyone, take the hit", glyph: "◍", type: "protect", pull: 0.3 },
-        { id: "b", name: "Layoffs + retention bonuses", glyph: "$", type: "capture", pull: 0.9 },
+        { id: "a", name: "Keep everyone whole, take the hit", glyph: "◍", type: "protect", pull: 0.3 },
+        { id: "b", name: "Layoffs for them, bonuses for us", glyph: "$", type: "capture", pull: 0.9 },
       ],
     },
     {
       y: 2013,
-      ch: "RECORD PROFITS",
+      ch: "THE BEST YEAR IN COMPANY HISTORY",
       o: [
-        { id: "a", name: "Raise the floor wage", glyph: "◍", type: "protect", pull: 0.32 },
-        { id: "b", name: "Record buyback", glyph: "$", type: "capture", pull: 0.92 },
+        { id: "a", name: "Let it reach the people who made it", glyph: "◍", type: "protect", pull: 0.32 },
+        { id: "b", name: "Every dollar back to the shareholders", glyph: "$", type: "capture", pull: 0.92 },
       ],
     },
     {
       y: 2018,
-      ch: "AUTOMATE · CONTRACT OUT",
+      ch: "AUTOMATE · THE LABOR COST IS THE PROBLEM",
       o: [
-        { id: "a", name: "Hire them as staff", glyph: "◍", type: "protect", pull: 0.3 },
-        { id: "b", name: "Automate, classify as gig", glyph: "⚙", type: "capture", pull: 0.92 },
+        { id: "a", name: "Keep them on with full benefits", glyph: "◍", type: "protect", pull: 0.3 },
+        { id: "b", name: "Automate it, classify them as gig", glyph: "⚙", type: "capture", pull: 0.92 },
       ],
     },
     {
       y: 2020,
-      ch: "A HARD YEAR · STOCK SOARS ANYWAY",
+      ch: "A HARD YEAR · THE MARKET DOESN'T CARE",
       o: [
-        { id: "a", name: "Hazard pay, stay safe", glyph: "◍", type: "protect", pull: 0.32 },
-        { id: "b", name: "Cut hours, ride the rally", glyph: "$", type: "capture", pull: 0.94 },
+        { id: "a", name: "Hazard pay, extended sick leave", glyph: "◍", type: "protect", pull: 0.32 },
+        { id: "b", name: "They'll stay for the hours. The stock won't wait.", glyph: "$", type: "capture", pull: 0.94 },
       ],
     },
   ],

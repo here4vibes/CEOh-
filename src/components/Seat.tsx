@@ -3,7 +3,7 @@ import { useGameStore } from "../store/gameStore";
 import { buildMeta } from "../engine/meta";
 import { capOf, clamp01, litOf, tierOf } from "../engine/population";
 import { avgCap, litCount, rankIndexForScore } from "../engine/seatRuntime";
-import { N, THRESH } from "../engine/constants";
+import { N, THRESH, FIRE } from "../engine/constants";
 import { hexRgb, mix, rgbToCss, WALL_DARK } from "../lib/color";
 import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 import { Dossier } from "./Dossier";
@@ -357,6 +357,13 @@ export function Seat({ cfg, onSeatComplete, onRestart, completeCta = "Play again
               <Delta label="WENT DARK" value={`${cons.died.length}`} color="var(--air)" />
             </div>
             <p className="lede">{cons.resLine}</p>
+            {run.board < FIRE + 15 && run.board >= FIRE && (
+              <p className="board-warning">
+                {run.board < FIRE + 5
+                  ? "An urgent call from the chair. The board meets this week."
+                  : "The board sent a letter. They're watching the next decision closely."}
+              </p>
+            )}
             {cons.died.length > 0 && (
               <div className="died-list">
                 <div className="died-label">{cfg.outLabel}</div>
