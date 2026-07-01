@@ -48,7 +48,7 @@ export function Seat({ cfg, onSeatComplete, onRestart, completeCta = "Play again
   // Visual stagger only — never affects sim state, so plain Math.random is fine here.
   const delay = useMemo(() => Array.from({ length: N }, () => Math.random() * 700), []);
 
-  const [phase, setPhase] = useState<Phase>(cfg.mode === "vote" ? "intro" : "desk");
+  const [phase, setPhase] = useState<Phase>(cfg.intro || cfg.mode === "vote" ? "intro" : "desk");
   const [lead, setLead] = useState<PresetOption | null>(null);
   const [dial, setDial] = useState(50);
   const [focus, setFocus] = useState<number | null>(null);
@@ -235,7 +235,24 @@ export function Seat({ cfg, onSeatComplete, onRestart, completeCta = "Play again
       </div>
 
       <div className="desk">
-        {phase === "intro" && (
+        {phase === "intro" && cfg.intro && (
+          <div className="desk-full">
+            {cfg.intro.map((line, i) => (
+              <p key={i} className={`lede${i === cfg.intro!.length - 1 ? " muted small" : ""}`}>
+                {line}
+              </p>
+            ))}
+            <button
+              className="primary-btn"
+              style={{ borderColor: cfg.scoreColor, color: cfg.scoreColor }}
+              onClick={() => setPhase("desk")}
+            >
+              Enter the boardroom ›
+            </button>
+          </div>
+        )}
+
+        {phase === "intro" && cfg.mode === "vote" && (
           <div className="desk-full">
             <p className="lede">
               You arrive with <b style={{ color: "var(--gold)" }}>${Math.round(character.money)}B</b> and{" "}

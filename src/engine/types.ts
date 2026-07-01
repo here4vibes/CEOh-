@@ -52,6 +52,8 @@ export interface SeatConfig {
   resultCapture: string;
   resultProtect: string;
   outLabel: string;
+  /** Paragraphs shown on the intro screen before the first turn. */
+  intro?: string[];
   turns: SeatTurn[];
   closingQuestion: { fired: string; ended: string; electionLost?: string };
   /** Politician only: after this turn index, check avg vote against threshold. */

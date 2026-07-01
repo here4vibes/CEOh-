@@ -28,6 +28,12 @@ export const CEO: SeatConfig = {
     { title: "Chairman & CEO", perk: "you pick the board now" },
     { title: "Legend", perk: "they teach your playbook in B-school" },
   ],
+  intro: [
+    "You've just been handed the corner office. Regional operation — a thousand employees, plants in three states, a board that wants to see growth.",
+    "Those lights on the wall are them. Workers, retirees, families in towns that exist because of this company. Right now they're doing fine.",
+    "The board gave you one number to move: the share price. There's a dial between reinvesting and extracting. The Street rewards extraction. The board is watching the dial.",
+    "The people on the wall are watching too — but quietly. Their costs don't show up until next quarter.",
+  ],
   resultCapture: "The Street loved it. “You’re fired,” to a few thousand. Stock popped.",
   resultProtect: "Analysts called it undisciplined. The stock slid; the board noticed.",
   outLabel: "FALLOUT THIS QUARTER",
