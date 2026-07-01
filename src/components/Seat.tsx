@@ -48,7 +48,11 @@ export function Seat({ cfg, onSeatComplete, onRestart, completeCta = "Play again
   // Visual stagger only — never affects sim state, so plain Math.random is fine here.
   const delay = useMemo(() => Array.from({ length: N }, () => Math.random() * 700), []);
 
-  const [phase, setPhase] = useState<Phase>(cfg.intro || cfg.mode === "vote" ? "intro" : "desk");
+  const [phase, setPhase] = useState<Phase>(() => {
+    if (run.fired || run.ended) return "ended";
+    if (run.electionLost) return "electionLost";
+    return cfg.intro || cfg.mode === "vote" ? "intro" : "desk";
+  });
   const [lead, setLead] = useState<PresetOption | null>(null);
   const [dial, setDial] = useState(50);
   const [focus, setFocus] = useState<number | null>(null);
@@ -273,7 +277,7 @@ export function Seat({ cfg, onSeatComplete, onRestart, completeCta = "Play again
           </div>
         )}
 
-        {(phase === "desk" || phase === "airing") && (
+        {(phase === "desk" || phase === "airing") && data && (
           <>
             <div className="bay">
               <div className="bay-label" style={{ color: cfg.scoreColor }}>
@@ -437,6 +441,23 @@ export function Seat({ cfg, onSeatComplete, onRestart, completeCta = "Play again
               <Stat n={cfg.ranks[rankIndex].title.split(",")[0]} l="final title" c="var(--gold)" small />
             </div>
             <p className="lede muted small">By every number they gave you, an exceptional run.</p>
+            {(() => {
+              const dark = population
+                .map((h, i) => ({ h, m: meta[i] }))
+                .filter(({ h }) => tierOf(litOf(cfg.mode, h)) === 3);
+              if (!dark.length) return null;
+              return (
+                <div className="died-list">
+                  <div className="died-label">WENT DARK THIS RUN</div>
+                  {dark.slice(0, 6).map(({ m }, k) => (
+                    <div className="died-line" key={k}>
+                      <span className="died-name">{m.name}</span> — {m.life[1][3]}.
+                    </div>
+                  ))}
+                  {dark.length > 6 && <div className="died-more">+{dark.length - 6} more households.</div>}
+                </div>
+              );
+            })()}
             <p className="closing-question">
               {run.fired ? cfg.closingQuestion.fired : cfg.closingQuestion.ended}
             </p>
