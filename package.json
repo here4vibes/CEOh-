@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:devvit": "tsc -b && vite build --config vite.devvit.config.ts",
     "lint": "oxlint",
     "preview": "vite preview",
     "harness": "tsx scripts/harness.ts"
