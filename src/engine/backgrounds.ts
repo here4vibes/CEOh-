@@ -3,6 +3,10 @@ import type { BackgroundProfile } from "./types";
 export const BACKGROUNDS: BackgroundProfile[] = [
   {
     id: "rural-displaced",
+    seats: ["supervisor"],
+    protagonist: "Roger Morrison",
+    dossierTag: "SHIFT SUPERVISOR",
+    moneyUnit: "K",
     householdName: "The Morrisons",
     location: "McDowell County, WV",
     tagline: "Former electrician at the Arch Coal plant. 56. The mine closed four years ago.",
@@ -11,10 +15,14 @@ export const BACKGROUNDS: BackgroundProfile[] = [
     perspective:
       "Jobs left before the explanations did. Politicians came through and promised to bring them back. They didn't. The county has been in managed decline so long that 'managed' is the lie.",
     closingAddendum:
-      "You were dealt a life where the exits closed before you arrived. What was available to you that wasn't available to someone fifty miles and twenty years away?",
+      "You were dealt a county where the exits had already closed. The rate was set by people who'd never seen Route 52 — and it ran through you.",
   },
   {
     id: "urban-gig",
+    seats: ["fleet"],
+    protagonist: "Maria Flores-Garcia",
+    dossierTag: "FLEET PARTNER",
+    moneyUnit: "K",
     householdName: "The Flores-Garcias",
     location: "Phoenix, AZ",
     tagline: "Two adults, three gig jobs between them. Monthly rent is $1,780. There is no cushion.",
@@ -23,10 +31,14 @@ export const BACKGROUNDS: BackgroundProfile[] = [
     perspective:
       "The floor people talk about — minimum wage, employer benefits, the forty-hour week — doesn't apply to how this work is classified. The way the work is classified determines what protections attach to it.",
     closingAddendum:
-      "You were dealt a life built on the gap between the letter of the law and how it gets applied. What decision in the game closed that gap — or widened it?",
+      "You were dealt a life one breakdown from the edge. The way out the app offered was standing on people one breakdown closer.",
   },
   {
     id: "suburban-professional",
+    seats: ["engineer"],
+    protagonist: "David Nguyen",
+    dossierTag: "SENIOR ENGINEER",
+    moneyUnit: "K",
     householdName: "The Nguyens",
     location: "Naperville, IL",
     tagline: "Software engineer, 44. Mortgage, 401k, two kids in the good school district. Technically fine.",
@@ -35,10 +47,14 @@ export const BACKGROUNDS: BackgroundProfile[] = [
     perspective:
       "The system appears to be working, which is why it is so hard to say something is wrong. The dysfunction is quiet. The cost is diffuse. The alternative is unspecified.",
     closingAddendum:
-      "You were dealt a life insulated enough to see the system whole. What did that vantage point let you ignore — and what did it let you see that others from here couldn't?",
+      "You were dealt a life insulated enough never to see the feed's effects firsthand. Every launch was reviewed. None of the consequences were.",
   },
   {
     id: "small-business",
+    seats: ["owner"],
+    protagonist: "Sandra Kellerman",
+    dossierTag: "FOUNDER & CEO",
+    moneyUnit: "K",
     householdName: "The Kellermans",
     location: "Tulsa, OK",
     tagline: "HVAC contractor. Built it herself. Seven employees. The insurance renewal is next month.",
@@ -47,10 +63,14 @@ export const BACKGROUNDS: BackgroundProfile[] = [
     perspective:
       "Risk is real. Rules come from people who have never signed the front of a check. The employees are not abstractions — they are families whose health insurance Sandra negotiates every year.",
     closingAddendum:
-      "You were dealt a life where accountability was immediate — every decision had your name on it. How did that change what 'good policy' felt like when you were playing?",
+      "You were dealt a life where every decision had your name on it. Then someone offered to buy the name.",
   },
   {
     id: "adjunct-academic",
+    seats: ["expert"],
+    protagonist: "Amara Okafor-Walker",
+    dossierTag: "EXPERT WITNESS",
+    moneyUnit: "K",
     householdName: "The Okafor-Walkers",
     location: "Columbus, OH",
     tagline: "University lecturer, 38. PhD. Seventh semester on a one-semester contract.",
@@ -59,10 +79,14 @@ export const BACKGROUNDS: BackgroundProfile[] = [
     perspective:
       "You can see the mechanism clearly and still be caught in it. The credential was supposed to be the exit. It turned out to be the admission price to a room where the jobs already left.",
     closingAddendum:
-      "You were dealt a life where you could name exactly what was happening to you. Did that help — or did the gap between understanding and changing it make the game harder?",
+      "You were dealt a life where you could see the mechanism clearly. The market paid you to describe it differently.",
   },
   {
     id: "farmer",
+    seats: ["farmer"],
+    protagonist: "Dale Pedersen",
+    dossierTag: "FOURTH GENERATION",
+    moneyUnit: "K",
     householdName: "The Pedersens",
     location: "Blue Earth County, MN",
     tagline: "Corn and soy, 61. Fourth generation. The land is worth more than he'll ever earn from it.",
@@ -71,10 +95,14 @@ export const BACKGROUNDS: BackgroundProfile[] = [
     perspective:
       "The subsidy keeps you in the game long enough to stay dependent. Independence is the story; the structure is the opposite. The land is both the asset and the trap.",
     closingAddendum:
-      "You were dealt a life where the asset and the trap are the same thing. What move in the game felt like that — necessary, costly, no clean way out?",
+      "You were dealt a life where the asset and the trap are the same thing. Every acre you kept was one a neighbor couldn't.",
   },
   {
     id: "coastal-renter",
+    seats: ["landlord"],
+    protagonist: "Keisha Henderson",
+    dossierTag: "LANDLORD",
+    moneyUnit: "K",
     householdName: "The Hendersons",
     location: "Oakland, CA",
     tagline: "Nurse, 34. Income is good. Rent is $2,900. Savings rate is approximately zero.",
@@ -83,10 +111,14 @@ export const BACKGROUNDS: BackgroundProfile[] = [
     perspective:
       "Wealth is not about income. It is about when your family got in. The people who bought in 1995 are not smarter. They got there before the price became the barrier.",
     closingAddendum:
-      "You were dealt a life where income and wealth diverged completely. Which game metric felt like income — and which one felt like actual accumulated wealth?",
+      "You were dealt a life where wealth depended on when you got in. You got in. Someone else is three months away now.",
   },
   {
     id: "retiree",
+    seats: ["trustee"],
+    protagonist: "Jim Peterson",
+    dossierTag: "PENSION TRUSTEE",
+    moneyUnit: "K",
     householdName: "The Petersons",
     location: "Green Bay, WI",
     tagline: "Retired teacher, 69. Social Security and a pension the state has been renegotiating for eight years.",
@@ -95,6 +127,22 @@ export const BACKGROUNDS: BackgroundProfile[] = [
     perspective:
       "The contract was real until it wasn't. The people changing the terms were not there when they were set. The argument is always about what is sustainable. The question of who bears that cost is never in the headline.",
     closingAddendum:
-      "You were dealt a life where the rules changed after you'd already played by them. Which player in the game did that to the country — and was it you?",
+      "You were dealt a life where the promise was kept — out of someone else's paycheck, in deals you only ever saw as a return.",
+  },
+  {
+    id: "outsider",
+    seats: ["ceo", "politician"],
+    protagonist: "J. R. Sterling",
+    dossierTag: "THE OUTSIDER",
+    moneyUnit: "B",
+    householdName: "The Sterlings",
+    location: "Manhattan, NY",
+    tagline: "Second-generation real estate. Born with a name already on the building.",
+    description:
+      "Your father built apartment blocks in the outer boroughs with federal loans and never let you forget it. You have his name, his lawyers, and a gift for television. The family business needs a bigger stage.",
+    perspective:
+      "From here, every rule is negotiable and every loss belongs to someone else. The system isn't rigged against you. It's the thing you're about to learn to drive.",
+    closingAddendum:
+      "You were dealt the one life in this deck built to climb. Everyone else was dealt the country you climbed through.",
   },
 ];

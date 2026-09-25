@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchBackgroundStats, type BackgroundStats } from "../services/telemetry";
 import type { BackgroundProfile } from "../engine/types";
+import { SEATS } from "../engine/seats";
 
 interface ResultScreenProps {
   background: BackgroundProfile;
@@ -32,6 +33,8 @@ export function ResultScreen({
       .finally(() => setLoading(false));
   }, [background.id]);
 
+  const hasElection = background.seats.includes("politician");
+  const firstSeat = SEATS[background.seats[0]];
   const showStats = !loading && stats !== null && stats.total_runs >= 5;
 
   return (
@@ -49,12 +52,16 @@ export function ResultScreen({
       </div>
 
       <div className="result-outcome">
-        {electionWon
-          ? "The election was won."
-          : politicianFired
-            ? "The party withdrew its support."
-            : "The race was called before it was over."}
-        {ceoBoardFired && " The board replaced you in the boardroom."}
+        {hasElection
+          ? electionWon
+            ? "The election was won."
+            : politicianFired
+              ? "The party withdrew its support."
+              : "The race was called before it was over."
+          : ceoBoardFired
+            ? `${(firstSeat.firedTitle ?? "Replaced").toLowerCase().replace(/^./, (c) => c.toUpperCase())}. Someone else finished what you wouldn't.`
+            : "You made it to the end without being replaced."}
+        {hasElection && ceoBoardFired && " The board replaced you in the boardroom."}
       </div>
 
       <div className="result-addendum">{background.closingAddendum}</div>
@@ -68,15 +75,17 @@ export function ResultScreen({
       {showStats && (
         <div className="result-peers">
           <div className="result-peers-label">
-            OTHERS DEALT {background.householdName.toUpperCase()}'S LIFE
+            OTHERS DEALT {background.householdName.toUpperCase()}' LIFE
             <span className="result-peers-count"> · {stats.total_runs} runs</span>
           </div>
           <div className="result-peer-stats">
-            <PeerStat
-              label="won the election"
-              value={`${stats.election_win_pct}%`}
-              highlight={electionWon}
-            />
+            {hasElection && (
+              <PeerStat
+                label="won the election"
+                value={`${stats.election_win_pct}%`}
+                highlight={electionWon}
+              />
+            )}
             <PeerStat
               label="avg Climb"
               value={String(stats.avg_climb)}
@@ -93,7 +102,7 @@ export function ResultScreen({
               highlight={litCount > stats.avg_lit}
             />
             <PeerStat
-              label="replaced in the boardroom"
+              label="were replaced"
               value={`${stats.ceo_fire_pct}%`}
               highlight={!ceoBoardFired}
             />

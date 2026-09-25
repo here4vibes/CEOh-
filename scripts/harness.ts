@@ -5,10 +5,11 @@
  */
 import { CEO } from "../src/engine/seats/ceo";
 import { POLITICIAN } from "../src/engine/seats/politician";
+import { ENGINEER, EXPERT, FARMER, FLEET, LANDLORD, OWNER, SUPERVISOR, TRUSTEE } from "../src/engine/seats/households";
 import { replay } from "../src/engine/replay";
 import { avgCiv, avgEcon, litCount, rankIndexForScore } from "../src/engine/seatRuntime";
 import { N } from "../src/engine/constants";
-import type { MoveLogEntry, PresetOption } from "../src/engine/types";
+import type { MoveLogEntry, PresetOption, SeatConfig } from "../src/engine/types";
 
 const SEED = 20260630;
 const DIAL = 50;
@@ -77,3 +78,24 @@ const results = combos.map(([c, p]) => runArc(c, p));
 
 console.log(`CE Oh! — balancing harness (seed ${SEED}, dial ${DIAL})\n`);
 console.table(results);
+
+const HOUSEHOLD_SEATS = [SUPERVISOR, FLEET, ENGINEER, OWNER, EXPERT, FARMER, LANDLORD, TRUSTEE];
+
+function runSingle(cfg: SeatConfig, strategy: Strategy) {
+  const moveLog = cfg.turns.map((turn, i) => ({ seatId: cfg.id, turnIndex: i, move: pickMove(strategy, i, turn.o), dialValue: DIAL }));
+  const state = replay(SEED, moveLog);
+  const run = state.seatRuns[cfg.id];
+  return {
+    seat: cfg.id,
+    strat: strategy,
+    rank: cfg.ranks[rankIndexForScore(cfg, run.score)].title,
+    fired: run.fired,
+    board: run.board,
+    civicPct: Math.round(avgCiv(state.population) * 100),
+    gapPct: Math.round((1 - avgEcon(state.population)) * 100),
+    lit: `${litCount(cfg.mode, state.population)}/${N}`,
+  };
+}
+
+console.log(`\nHousehold seats (seed ${SEED}, dial ${DIAL})\n`);
+console.table(HOUSEHOLD_SEATS.flatMap((cfg) => (["all-extract", "all-restraint", "mixed"] as Strategy[]).map((s) => runSingle(cfg, s))));

@@ -1,6 +1,6 @@
 import type { MoveLogEntry } from "../engine/types";
 
-const KEY = "ceoh:save:v1";
+const KEY = "ceoh:save:v2";
 
 export interface SavedGame {
   seed: number;

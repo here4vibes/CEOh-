@@ -251,7 +251,7 @@ export function Seat({ cfg, onSeatComplete, onRestart, completeCta = "Play again
               style={{ borderColor: cfg.scoreColor, color: cfg.scoreColor }}
               onClick={() => setPhase("desk")}
             >
-              Enter the boardroom ›
+              {cfg.introCta ?? "Enter the boardroom ›"}
             </button>
           </div>
         )}
@@ -346,7 +346,7 @@ export function Seat({ cfg, onSeatComplete, onRestart, completeCta = "Play again
                 className="lever"
                 style={{ borderColor: cfg.scoreColor, opacity: lead && phase !== "airing" ? 1 : 0.4 }}
               >
-                {cfg.mode === "vote" ? "GO" : "AIR IT"}
+                {cfg.actLabel ?? (cfg.mode === "vote" ? "GO" : "AIR IT")}
               </button>
               {lead && <div className="lever-hint">{lead.name}</div>}
             </div>

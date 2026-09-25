@@ -6,36 +6,37 @@ import { Hub } from "./components/Hub";
 import { BackgroundCard } from "./components/BackgroundCard";
 import { ResultScreen } from "./components/ResultScreen";
 import { litOf } from "./engine/population";
+import type { BackgroundProfile } from "./engine/types";
 import { DEATH } from "./engine/constants";
 import { isInDevvit, sendWebViewReady, sendGameComplete, onDevvitInit } from "./devvitBridge";
 import { submitRun } from "./services/telemetry";
 import "./App.css";
 
-type View = "background" | "ceo" | "hub" | "politician" | "results";
+type View = { kind: "background" } | { kind: "seat"; index: number } | { kind: "hub" } | { kind: "results" };
 
 interface RunResult {
   climbScore: number;
   stewardScore: number;
   litCount: number;
   electionWon: boolean;
+  /** The first seat's replacement rule fired (CEO for Sterling, the household's seat otherwise). */
   ceoBoardFired: boolean;
   politicianFired: boolean;
 }
 
-function computeScores(): RunResult {
+function computeScores(background: BackgroundProfile): RunResult {
   const { character, population, seatRuns } = useGameStore.getState();
+  const lastSeat = SEATS[background.seats[background.seats.length - 1]];
   const climbScore = Math.round(character.money * 10 + character.fame + character.power);
-  const litCount = population.filter((h) => litOf("vote", h) > DEATH).length;
+  const litCount = population.filter((h) => litOf(lastSeat.mode, h) > DEATH).length;
   const civic = Math.round((population.reduce((s, h) => s + h.civ, 0) / population.length) * 100);
-  const stewardScore = civic + litCount;
   const polRun = seatRuns["politician"];
-  const ceoRun = seatRuns["ceo"];
   return {
     climbScore,
-    stewardScore,
+    stewardScore: civic + litCount,
     litCount,
     electionWon: !!polRun && polRun.ended && !polRun.fired && !polRun.electionLost,
-    ceoBoardFired: !!ceoRun?.fired,
+    ceoBoardFired: !!seatRuns[background.seats[0]]?.fired,
     politicianFired: !!polRun?.fired,
   };
 }
@@ -47,7 +48,7 @@ function App() {
   const population = useGameStore((s) => s.population);
   const background = useGameStore((s) => s.background);
 
-  const [view, setView] = useState<View>("background");
+  const [view, setView] = useState<View>({ kind: "background" });
   const [result, setResult] = useState<RunResult | null>(null);
   // Devvit: hold rendering until the parent sends the weekly seed.
   const [ready, setReady] = useState(() => !isInDevvit());
@@ -74,11 +75,11 @@ function App() {
   function startNewGame() {
     newGame();
     setResult(null);
-    setView("background");
+    setView({ kind: "background" });
   }
 
-  function onPoliticianComplete() {
-    const scores = computeScores();
+  function onRunComplete() {
+    const scores = computeScores(background!);
     setResult(scores);
 
     // Submit to Supabase (fire and forget — never blocks the game).
@@ -105,37 +106,29 @@ function App() {
       return;
     }
 
-    setView("results");
+    setView({ kind: "results" });
   }
 
-  if (view === "background") {
-    return <BackgroundCard background={background} onBegin={() => setView("ceo")} />;
+  if (view.kind === "background") {
+    return <BackgroundCard background={background} onBegin={() => setView({ kind: "seat", index: 0 })} />;
   }
 
-  if (view === "ceo") {
+  if (view.kind === "seat") {
+    const { index } = view;
+    const isLast = index === background.seats.length - 1;
     return (
       <Seat
-        cfg={SEATS.ceo}
-        onSeatComplete={() => setView("hub")}
+        key={background.seats[index]}
+        cfg={SEATS[background.seats[index]]}
+        onSeatComplete={isLast ? onRunComplete : () => setView({ kind: "hub" })}
         onRestart={startNewGame}
-        completeCta="Continue to the campaign ›"
+        completeCta={isLast ? "See your results ›" : "Continue to the campaign ›"}
       />
     );
   }
 
-  if (view === "hub") {
-    return <Hub onEnter={() => setView("politician")} onRestart={startNewGame} />;
-  }
-
-  if (view === "politician") {
-    return (
-      <Seat
-        cfg={SEATS.politician}
-        onSeatComplete={onPoliticianComplete}
-        onRestart={startNewGame}
-        completeCta="See your results ›"
-      />
-    );
+  if (view.kind === "hub") {
+    return <Hub onEnter={() => setView({ kind: "seat", index: 1 })} onRestart={startNewGame} />;
   }
 
   // results

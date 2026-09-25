@@ -54,6 +54,10 @@ export interface SeatConfig {
   outLabel: string;
   /** Paragraphs shown on the intro screen before the first turn. */
   intro?: string[];
+  /** Button that leaves the intro screen (default "Enter the boardroom ›"). */
+  introCta?: string;
+  /** Label on the button that commits a move (default "AIR IT", or "GO" for vote seats). */
+  actLabel?: string;
   /** Secondary stats that also accumulate each move, keyed to StatKey, value is the scale factor. */
   sideStats?: Partial<Record<StatKey, number>>;
   /** Label for the confidence meter in the dossier (default "BOARD"). */
@@ -72,6 +76,12 @@ export interface SeatConfig {
 
 export interface BackgroundProfile {
   id: string;
+  /** Seat ids played in order; more than one inserts the Hub between them. */
+  seats: string[];
+  /** Name and tag shown in the dossier during play. */
+  protagonist: string;
+  dossierTag: string;
+  moneyUnit: "B" | "K";
   householdName: string;
   location: string;
   tagline: string;

@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import { N, FIRE } from "../engine/constants";
+import { useGameStore } from "../store/gameStore";
 import type { Character, Household, SeatConfig } from "../engine/types";
 
 interface DossierProps {
@@ -11,17 +12,18 @@ interface DossierProps {
 }
 
 export function Dossier({ character, population, cfg, avgCap, board }: DossierProps) {
+  const background = useGameStore((s) => s.background);
   const civic = Math.round((population.reduce((s, h) => s + h.civ, 0) / N) * 100);
   const gap = Math.round((1 - population.reduce((s, h) => s + h.econ, 0) / N) * 100);
 
   return (
     <div className="dossier">
       <div className="dossier-id">
-        <div className="dossier-name">J. R. STERLING</div>
-        <div className="dossier-tag">THE OUTSIDER</div>
+        <div className="dossier-name">{(background?.protagonist ?? "J. R. Sterling").toUpperCase()}</div>
+        <div className="dossier-tag">{background?.dossierTag ?? "THE OUTSIDER"}</div>
       </div>
       <div className="dossier-stats">
-        <Mini label="MONEY" value={`$${Math.round(character.money)}B`} style={{ color: "var(--green)" }} />
+        <Mini label="MONEY" value={`$${Math.round(character.money)}${background?.moneyUnit ?? "B"}`} style={{ color: "var(--green)" }} />
         <Mini label="FAME" value={Math.round(character.fame)} style={{ color: "var(--amber)" }} />
         <Mini label="POWER" value={Math.round(character.power)} style={{ color: "#D9544D" }} />
         <div className="dossier-sep" />
