@@ -5,7 +5,7 @@
  */
 import { CEO } from "../src/engine/seats/ceo";
 import { POLITICIAN } from "../src/engine/seats/politician";
-import { ENGINEER, EXPERT, FARMER, FLEET, LANDLORD, OWNER, SUPERVISOR, TRUSTEE } from "../src/engine/seats/households";
+import { COUNCIL, ENGINEER, EXPERT, FARMER, FLEET, LANDLORD, OWNER, PASTOR, SUPERVISOR, TRUSTEE } from "../src/engine/seats/households";
 import { replay } from "../src/engine/replay";
 import { avgCiv, avgEcon, litCount, rankIndexForScore } from "../src/engine/seatRuntime";
 import { N } from "../src/engine/constants";
@@ -79,7 +79,7 @@ const results = combos.map(([c, p]) => runArc(c, p));
 console.log(`CE Oh! — balancing harness (seed ${SEED}, dial ${DIAL})\n`);
 console.table(results);
 
-const HOUSEHOLD_SEATS = [SUPERVISOR, FLEET, ENGINEER, OWNER, EXPERT, FARMER, LANDLORD, TRUSTEE];
+const HOUSEHOLD_SEATS = [SUPERVISOR, FLEET, ENGINEER, OWNER, EXPERT, FARMER, LANDLORD, TRUSTEE, COUNCIL, PASTOR];
 
 function runSingle(cfg: SeatConfig, strategy: Strategy) {
   const moveLog = cfg.turns.map((turn, i) => ({ seatId: cfg.id, turnIndex: i, move: pickMove(strategy, i, turn.o), dialValue: DIAL }));

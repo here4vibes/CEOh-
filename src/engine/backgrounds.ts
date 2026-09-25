@@ -130,6 +130,38 @@ export const BACKGROUNDS: BackgroundProfile[] = [
       "You were dealt a life where the promise was kept — out of someone else's paycheck, in deals you only ever saw as a return.",
   },
   {
+    id: "river-parish",
+    seats: ["council"],
+    protagonist: "Denise Batiste",
+    dossierTag: "PARISH COUNCIL",
+    moneyUnit: "K",
+    householdName: "The Batistes",
+    location: "St. James Parish, LA",
+    tagline: "Retired schoolteacher, 58. Parish council member. Grew up between two plants.",
+    description:
+      "Denise Batiste's family has lived on the same river road since 1870. Her brother works at the fertilizer plant. Her mother had lung cancer at 64. The church still holds a fish fry every Friday in Lent, a mile and a half from the fence line.",
+    perspective:
+      "The plants brought the only jobs that pay and the air nobody asked for, and they arrived together. Here you don't get one without the other. The decisions get made in Baton Rouge and at the corporate office. The parish just votes on the details.",
+    closingAddendum:
+      "You were dealt a parish where the jobs and the air arrived together. Every exemption was approved by someone who lived there.",
+  },
+  {
+    id: "small-town-church",
+    seats: ["pastor"],
+    protagonist: "Wade Tillman",
+    dossierTag: "SENIOR PASTOR",
+    moneyUnit: "K",
+    householdName: "The Tillmans",
+    location: "Muscle Shoals, AL",
+    tagline: "Pastor, 47. A growing church, a new sanctuary, and a twelve-million-dollar note.",
+    description:
+      "Wade and Leanne Tillman started Crossroads Church with forty people and a rented sound system. Their three kids grew up in the nursery. Leanne runs the food pantry, which fed more families last year than the year before, and the year before that.",
+    perspective:
+      "When the plant closed and the paper folded, the church was what was left. People come here for work, for meals, for each other. Folks in Washington talk about this town like it's a punchline. The church is the only institution that still shows up.",
+    closingAddendum:
+      "You were dealt the last room in town where everyone still showed up. Filling it and holding it together turned out to be different jobs.",
+  },
+  {
     id: "outsider",
     seats: ["ceo", "politician"],
     protagonist: "J. R. Sterling",
