@@ -70,6 +70,16 @@ export interface SeatConfig {
   electionGate?: { turnIndex: number; threshold: number };
 }
 
+export interface BackgroundProfile {
+  id: string;
+  householdName: string;
+  location: string;
+  tagline: string;
+  description: string;
+  perspective: string;
+  closingAddendum: string;
+}
+
 export interface MoveLogEntry {
   seatId: string;
   turnIndex: number;
