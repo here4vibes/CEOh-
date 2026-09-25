@@ -3,7 +3,8 @@ import { buildPopulation, clamp01 } from "./population";
 import { airMove, boardDelta, fastForwardFired } from "./seatRuntime";
 import { SEATS } from "./seats";
 import { FIRE } from "./constants";
-import type { Character, Household, MoveLogEntry, SeatRunState, StatKey } from "./types";
+import { BACKGROUNDS } from "./backgrounds";
+import type { BackgroundProfile, Character, Household, MoveLogEntry, SeatRunState, StatKey } from "./types";
 
 export function freshCharacter(): Character {
   return { money: 0, fame: 0, power: 0, clout: 0, doctrine: 0, orthodoxy: 0 };
@@ -14,10 +15,15 @@ function addStat(character: Character, key: StatKey, amt: number): Character {
   return { ...character, [key]: Math.min(cap, character[key] + amt) };
 }
 
+export function drawBackground(rng: RNG): BackgroundProfile {
+  return BACKGROUNDS[Math.floor(rng() * BACKGROUNDS.length)];
+}
+
 export interface ReplayState {
   population: Household[];
   character: Character;
   seatRuns: Record<string, SeatRunState>;
+  background: BackgroundProfile;
   rng: RNG; // left advanced exactly where the log ends, so live play can continue from here
 }
 
@@ -29,6 +35,7 @@ export interface ReplayState {
 export function replay(seed: number, moveLog: MoveLogEntry[]): ReplayState {
   const rng = mulberry32(seed);
   let population = buildPopulation(rng);
+  const background = drawBackground(rng);
   let character = freshCharacter();
   const seatRuns: Record<string, SeatRunState> = {};
 
@@ -80,5 +87,5 @@ export function replay(seed: number, moveLog: MoveLogEntry[]): ReplayState {
     }
   }
 
-  return { population, character, seatRuns, rng };
+  return { population, character, seatRuns, background, rng };
 }

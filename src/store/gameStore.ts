@@ -2,11 +2,10 @@ import { create } from "zustand";
 import { mulberry32, randomSeed, type RNG } from "../engine/rng";
 import { buildPopulation, clamp01 } from "../engine/population";
 import { airMove, boardDelta, fastForwardFired, type AirResult } from "../engine/seatRuntime";
-import { freshCharacter, replay } from "../engine/replay";
+import { drawBackground, freshCharacter, replay } from "../engine/replay";
 import { SEATS } from "../engine/seats";
 import { FIRE } from "../engine/constants";
 import { loadSave, writeSave } from "./persistence";
-import { BACKGROUNDS } from "../engine/backgrounds";
 import type { BackgroundProfile, Character, Household, MoveLogEntry, PresetOption, SeatRunState, StatKey } from "../engine/types";
 
 function addStat(character: Character, key: StatKey, amt: number): Character {
@@ -56,6 +55,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
         population: state.population,
         character: state.character,
         seatRuns: state.seatRuns,
+        background: state.background,
         rng: state.rng,
       });
       return;
@@ -66,8 +66,7 @@ export const useGameStore = create<GameStore>((set, get) => ({
   newGame: (seed = randomSeed()) => {
     const rng = mulberry32(seed);
     const population = buildPopulation(rng);
-    // Draw background after population so replay determinism is preserved.
-    const background = BACKGROUNDS[Math.floor(rng() * BACKGROUNDS.length)];
+    const background = drawBackground(rng);
     set({ seed, moveLog: [], population, character: freshCharacter(), seatRuns: {}, rng, background });
     writeSave({ seed, moveLog: [] });
   },
