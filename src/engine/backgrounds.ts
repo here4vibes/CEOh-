@@ -162,6 +162,38 @@ export const BACKGROUNDS: BackgroundProfile[] = [
       "You were dealt the last room in town where everyone still showed up. Filling it and holding it together turned out to be different jobs.",
   },
   {
+    id: "ship-channel",
+    seats: ["local"],
+    protagonist: "Ray Villarreal",
+    dossierTag: "UNION PRESIDENT",
+    moneyUnit: "K",
+    householdName: "The Villarreals",
+    location: "Pasadena, TX",
+    tagline: "Refinery operator, 51. Twenty-six years on the Ship Channel. His father ran the same unit.",
+    description:
+      "Ray and Yolanda Villarreal own a brick house in Pasadena with a view of the flare stack. The refinery paid for the house, the truck, and their daughter's nursing degree. Yolanda keeps an inhaler in every room for their grandson.",
+    perspective:
+      "The refinery is the best job a man without a degree can get in Texas, and everybody here knows it. The union is why it's a good job. You don't bite the hand. You also don't pretend the air is fine.",
+    closingAddendum:
+      "You were dealt a good job in a place that pays for it in other ways. The members could vote. The people downwind couldn't.",
+  },
+  {
+    id: "carpet-mill",
+    seats: ["mill"],
+    protagonist: "Tom Hardwick",
+    dossierTag: "THIRD-GENERATION CEO",
+    moneyUnit: "K",
+    householdName: "The Hardwicks",
+    location: "Dalton, GA",
+    tagline: "CEO of the family carpet mill, 58. Third generation. Three plants, nine hundred jobs.",
+    description:
+      "Tom Hardwick grew up in the mill office doing his homework on the shipping desk. He coaches Little League and sits on the hospital board. He knows which of his line workers have kids at the high school, because his kids went there too.",
+    perspective:
+      "The family name is on the mill, the stadium, and the Methodist church's fellowship hall. That means you answer for things. It also means forty cousins in Atlanta and Charlotte expect a check every quarter.",
+    closingAddendum:
+      "You were dealt the family name on the building. It turned out the family and the town wanted different things from it.",
+  },
+  {
     id: "outsider",
     seats: ["ceo", "politician"],
     protagonist: "J. R. Sterling",
