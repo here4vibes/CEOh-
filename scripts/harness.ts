@@ -5,7 +5,8 @@
  */
 import { CEO } from "../src/engine/seats/ceo";
 import { POLITICIAN } from "../src/engine/seats/politician";
-import { COUNCIL, ENGINEER, EXPERT, FARMER, FLEET, LANDLORD, MILL, OWNER, PASTOR, UNION_LOCAL, SUPERVISOR, TRUSTEE } from "../src/engine/seats/households";
+import { BACKGROUNDS } from "../src/engine/backgrounds";
+import { SEATS } from "../src/engine/seats";
 import { replay } from "../src/engine/replay";
 import { avgCiv, avgEcon, litCount, rankIndexForScore } from "../src/engine/seatRuntime";
 import { N } from "../src/engine/constants";
@@ -79,23 +80,31 @@ const results = combos.map(([c, p]) => runArc(c, p));
 console.log(`CE Oh! — balancing harness (seed ${SEED}, dial ${DIAL})\n`);
 console.table(results);
 
-const HOUSEHOLD_SEATS = [SUPERVISOR, FLEET, ENGINEER, OWNER, EXPERT, FARMER, LANDLORD, TRUSTEE, COUNCIL, PASTOR, UNION_LOCAL, MILL];
+const SINGLE_SEAT_LIVES = BACKGROUNDS.filter((b) => b.seats.length === 1).map((b) => SEATS[b.seats[0]]);
 
 function runSingle(cfg: SeatConfig, strategy: Strategy) {
   const moveLog = cfg.turns.map((turn, i) => ({ seatId: cfg.id, turnIndex: i, move: pickMove(strategy, i, turn.o), dialValue: DIAL }));
   const state = replay(SEED, moveLog);
   const run = state.seatRuns[cfg.id];
-  return {
-    seat: cfg.id,
-    strat: strategy,
-    rank: cfg.ranks[rankIndexForScore(cfg, run.score)].title,
-    fired: run.fired,
-    board: run.board,
-    civicPct: Math.round(avgCiv(state.population) * 100),
-    gapPct: Math.round((1 - avgEcon(state.population)) * 100),
-    lit: `${litCount(cfg.mode, state.population)}/${N}`,
-  };
+  return { rank: rankIndexForScore(cfg, run.score), fired: run.fired, lit: litCount(cfg.mode, state.population) };
 }
 
-console.log(`\nHousehold seats (seed ${SEED}, dial ${DIAL})\n`);
-console.table(HOUSEHOLD_SEATS.flatMap((cfg) => (["all-extract", "all-restraint", "mixed"] as Strategy[]).map((s) => runSingle(cfg, s))));
+const rows = SINGLE_SEAT_LIVES.map((cfg) => {
+  const ext = runSingle(cfg, "all-extract");
+  const res = runSingle(cfg, "all-restraint");
+  const mix = runSingle(cfg, "mixed");
+  return {
+    seat: cfg.id,
+    mode: cfg.mode,
+    "extract: top rank": ext.rank === cfg.ranks.length - 1,
+    "extract: lit": ext.lit,
+    "restraint: fired": res.fired,
+    "mixed: survives": !mix.fired,
+    "mixed: lit": mix.lit,
+  };
+});
+
+console.log(`\nSingle-seat lives (seed ${SEED}, dial ${DIAL})\n`);
+console.table(rows);
+const broken = rows.filter((r) => !r["restraint: fired"] || !r["mixed: survives"]);
+console.log(broken.length ? `${broken.length} seats break the replacement rule: ${broken.map((r) => r.seat).join(", ")}` : "every seat: restraint gets you replaced, mixed survives");

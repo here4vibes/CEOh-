@@ -1,6 +1,7 @@
 import type { BackgroundProfile } from "./types";
+import { LIVES } from "./lives";
 
-export const BACKGROUNDS: BackgroundProfile[] = [
+const HAND_BUILT: BackgroundProfile[] = [
   {
     id: "rural-displaced",
     seats: ["supervisor"],
@@ -210,3 +211,5 @@ export const BACKGROUNDS: BackgroundProfile[] = [
       "You were dealt the one life in this deck built to climb. Everyone else was dealt the country you climbed through.",
   },
 ];
+
+export const BACKGROUNDS: BackgroundProfile[] = [...HAND_BUILT, ...LIVES.map((l) => l.background)];

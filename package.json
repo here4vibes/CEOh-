@@ -9,7 +9,8 @@
     "build:devvit": "tsc -b && vite build --config vite.devvit.config.ts",
     "lint": "oxlint",
     "preview": "vite preview",
-    "harness": "tsx scripts/harness.ts"
+    "harness": "tsx scripts/harness.ts",
+    "deck-check": "tsx scripts/deck-check.ts"
   },
   "dependencies": {
     "react": "^19.2.7",
