@@ -1,0 +1,110 @@
+import { life } from "../build";
+
+export const NGUYENS = life({
+  id: "suburban-professional",
+  protagonist: "David Nguyen",
+  dossierTag: "SENIOR ENGINEER",
+  householdName: "The Nguyens",
+  location: "Naperville, IL",
+  tagline: "Senior engineer on a social platform's Growth team, 44. Mortgage, 401(k), two kids in the good school district. Technically fine.",
+  description:
+    "David Nguyen's parents came from Saigon in 1980 with nothing and opened a nail salon in Uptown. He did everything the script said: engineering at Illinois, a job in tech, a house in Naperville. His daughter, Lily, is nineteen. His father reads the news in a Vietnamese-language group on the platform David builds.",
+  perspective:
+    "We connect people. Most of what happens on the platform is birthday wishes and photos of grandkids. The metrics tell us what people want, and we give them more of it. If people want something that's bad for them, is that really my call to make?",
+  closingAddendum:
+    "You were dealt a life insulated enough to never see the feed's effects up close. Then they showed up at your own dinner table.",
+  seat: {
+    title: "The Engineer",
+    role: "Senior Engineer, Growth",
+    mode: "attn",
+    color: "#9B7FD9",
+    scoreLabel: "ENGAGEMENT",
+    dial: ["ship it clean", "optimize for time spent"],
+    dialNote: "the metric is minutes, not meaning",
+    board: "REVIEW",
+    firedTitle: "REORGED OUT",
+    firedBody:
+      "Your review said 'lacks impact.' They moved you to an internal tools team and gave your roadmap to a twenty-four-year-old who shipped all of it in a quarter. The feed got stickier without you.",
+    pressure: [
+      "Your manager, Priya, asked why your launch moved the metric less than the forecast.",
+      "Calibration is next week. Priya says your 'impact narrative' needs work, and she means it kindly.",
+    ],
+    ranks: [
+      ["Senior Engineer", "RSUs vesting quarterly"],
+      ["Staff Engineer", "your name on the launch memo"],
+      ["Principal", "a seat in the metrics review"],
+      ["Director, Growth", "your own org"],
+      ["VP Engineering", "the stock is your net worth now"],
+      ["Keynote", "you explain 'connection' on stage"],
+    ],
+    intro: [
+      "You're David Nguyen. It's 11 p.m. The kids are asleep, the laptop is open on the kitchen island, and your launch goes live to two billion people at 9 a.m. Pacific.",
+      "The lights on the wall are users, a small town's worth: the PTA chair, the retiree who reads every notice, the teenager up past midnight, and your father, forwarding things to his group.",
+      "Your review is graded on engagement. Your dial runs from shipping it clean to optimizing for time spent.",
+      "Nothing you ship hurts anyone on the day it ships. The civic numbers show up next quarter, if anyone measures them.",
+    ],
+    introCta: "Open the laptop ›",
+    outLabel: "FALLOUT THIS CYCLE",
+    fired: "Who decided that time spent was the thing to maximize?",
+    ended: "Every launch hit its number. What did people stop doing with the hours you won?",
+    people: [
+      ["the phone", "checks it a few times a day", "checks it every hour", "can't put it down", "lost to the feed"],
+      ["the news", "reads the local paper", "gets it from the feed", "gets it from strangers' posts", "believes whatever goes viral"],
+      ["the family table", "dinner without phones", "phones at the table", "everyone eats in separate rooms", "hasn't spoken to his brother since the election"],
+      ["the kids", "outside after school", "on screens most evenings", "scrolling until 2 a.m.", "the daughter stopped eating"],
+      ["the town meeting", "goes every month", "watches the stream", "only sees the angry clips", "thinks the council is out to get them"],
+      ["the neighbors", "knows them by name", "waves from the driveway", "argues with them online", "blocked them all"],
+    ],
+    turns: [
+      [
+        2012,
+        "MOBILE IS EVERYTHING · MAKE THE FEED STICKY",
+        ["Ship a feed that ends", "A clean feed with a bottom. Sessions ran 11% shorter than the competitor's, and your manager noticed first."],
+        ["Ship infinite scroll", "Infinite scroll shipped on a Tuesday. Nobody reaches the bottom anymore, because there isn't one."],
+        "∞",
+      ],
+      [
+        2014,
+        "NOTIFICATIONS DRIVE RETURN VISITS",
+        ["Notify only when a person writes to them", "Return visits dipped, and the team channel filled with thinking-face emojis."],
+        ["Red badges for everything", "Red badges everywhere. The average user now checks their phone ninety-six times a day."],
+        "●",
+      ],
+      [
+        2016,
+        "OUTRAGE GETS SIX TIMES THE SHARES",
+        ["Downrank the rage bait; eat the dip", "Engagement dropped 4%, and the dip became the only thing anyone remembered about your year."],
+        ["Weight every reaction the same", "Every reaction counted equally. The angriest posts traveled furthest, every time, in every language."],
+        "⚡",
+      ],
+      [
+        2018,
+        "AN INTERNAL STUDY · TEEN GIRLS FEEL WORSE · LILY JUST GOT A PHONE",
+        ["Take it to leadership, in writing", "Leadership thanked you and shelved it. You set a screen-time limit on Lily's phone. She broke it in a week."],
+        ["Ship the teen feature — it's not your study", "The feature shipped to thirty million teenagers. Lily was one of them by Christmas."],
+        "●",
+      ],
+      [
+        2020,
+        "THE INTEGRITY TEAM IS DISSOLVED · YOUR FATHER'S FEED IS FULL OF RUMORS",
+        ["Keep the guardrails running on nights and weekends", "You kept them running until they reassigned you. Your father still forwards you videos, just fewer."],
+        ["Take the promotion on the new team", "You got the promotion. Your father forwarded you a video about the election, in Vietnamese. It had four million views."],
+        "⚡",
+      ],
+      [
+        2022,
+        "SHORT VIDEO IS EATING OUR LUNCH",
+        ["Keep friends and family at the center", "The feed stayed personal. Younger users kept leaving for the other app, and your team shrank."],
+        ["Autoplay strangers, forever", "Time spent climbed 17%. People saw less of anyone they actually knew."],
+        "∞",
+      ],
+      [
+        2024,
+        "AI CONTENT COSTS NOTHING TO MAKE",
+        ["Label it and limit it", "The feed felt emptier and more human. Lily said she'd put her phone down on her own for the first time in years."],
+        ["Let it fill the feed", "Generated posts filled the feed. Nobody can tell the difference anymore, and the metric doesn't care."],
+        "⚙",
+      ],
+    ],
+  },
+});

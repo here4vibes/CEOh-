@@ -36,8 +36,6 @@ export const POLITICIAN: SeatConfig = {
     { title: "President", perk: "the most powerful seat there is" },
     { title: "Two-Term", perk: "they will never be rid of you" },
   ],
-  resultCapture: "The crowd roared. The room was yours. More of them are too.",
-  resultProtect: "Thoughtful. Polite applause. The numbers barely moved.",
   outLabel: "TURNED OUT TONIGHT",
   closingQuestion: {
     fired: "Someone else came in and did it anyway. What would have had to change for that not to be an option?",
@@ -51,48 +49,48 @@ export const POLITICIAN: SeatConfig = {
       y: 0,
       ch: "A GILDED ESCALATOR · THE OUTSIDER DESCENDS",
       o: [
-        { id: "a", name: "A ten-point plan", glyph: "◍", type: "protect", pull: 0.3 },
-        { id: "b", name: "“The system is rigged”", glyph: "⚡", type: "capture", pull: 0.7 },
+        { id: "a", name: "A ten-point plan", glyph: "◍", type: "protect", pull: 0.3, result: "The plan was solid. Nobody clipped it. The cable networks ran the other guy all night." },
+        { id: "b", name: "“The system is rigged”", glyph: "⚡", type: "capture", pull: 0.7, result: "'Rigged' trended for three days. People who'd lost the most heard their own anger said out loud." },
       ],
     },
     {
       y: 1,
       ch: "THE PRIMARY · ELDERS VS THE BASE",
       o: [
-        { id: "a", name: "Build a real coalition", glyph: "◍", type: "protect", pull: 0.32 },
-        { id: "b", name: "Nickname your rivals", glyph: "⚡", type: "capture", pull: 0.8 },
+        { id: "a", name: "Build a real coalition", glyph: "◍", type: "protect", pull: 0.32, result: "The coalition came together slowly. The base called you 'establishment.'" },
+        { id: "b", name: "Nickname your rivals", glyph: "⚡", type: "capture", pull: 0.8, result: "The nicknames stuck. Your rivals spent the primary answering to them." },
       ],
     },
     {
       y: 2,
       ch: "THE DEBATE · FACTS VS DOMINANCE",
       o: [
-        { id: "a", name: "Tell them a hard truth", glyph: "◍", type: "protect", pull: 0.3 },
-        { id: "b", name: "Dominate, never concede", glyph: "⚡", type: "capture", pull: 0.85 },
+        { id: "a", name: "Tell them a hard truth", glyph: "◍", type: "protect", pull: 0.3, result: "You told the truth about what it would take. The instant polls called it a loss." },
+        { id: "b", name: "Dominate, never concede", glyph: "⚡", type: "capture", pull: 0.85, result: "You never conceded a point. Nobody remembered a fact, and everybody remembered you." },
       ],
     },
     {
       y: 3,
       ch: "THE RALLY · MAKE IT LIKE IT WAS",
       o: [
-        { id: "a", name: "Speak to everyone", glyph: "◍", type: "protect", pull: 0.32 },
-        { id: "b", name: "“Take it back”", glyph: "↺", type: "capture", pull: 0.9 },
+        { id: "a", name: "Speak to everyone", glyph: "◍", type: "protect", pull: 0.32, result: "You spoke to the whole state. The crowd was polite and half the size." },
+        { id: "b", name: "“Take it back”", glyph: "↺", type: "capture", pull: 0.9, result: "'Take it back' ran on every channel. The crowd chanted it all the way to the cars." },
       ],
     },
     {
       y: 4,
       ch: "ELECTION DAY · TURNOUT IS EVERYTHING",
       o: [
-        { id: "a", name: "Persuade the middle", glyph: "◍", type: "protect", pull: 0.3 },
-        { id: "b", name: "Rage drives turnout", glyph: "⚡", type: "capture", pull: 0.92 },
+        { id: "a", name: "Persuade the middle", glyph: "◍", type: "protect", pull: 0.3, result: "You made the case to the middle. Turnout in the counties you needed was soft." },
+        { id: "b", name: "Rage drives turnout", glyph: "⚡", type: "capture", pull: 0.92, result: "Rage drove turnout. Counties that hadn't voted in decades came out in the rain." },
       ],
     },
     {
       y: 5,
       ch: "IN OFFICE · GOVERN, OR JUST WIN AGAIN",
       o: [
-        { id: "a", name: "Actually deliver", glyph: "◍", type: "protect", pull: 0.34 },
-        { id: "b", name: "Govern by grievance", glyph: "⚡", type: "capture", pull: 0.9 },
+        { id: "a", name: "Actually deliver", glyph: "◍", type: "protect", pull: 0.34, result: "You delivered a bill that fixed something real. The base asked where the fight went." },
+        { id: "b", name: "Govern by grievance", glyph: "⚡", type: "capture", pull: 0.9, result: "Every day was a new enemy. Nothing got built, and the ratings never dipped." },
       ],
     },
   ],

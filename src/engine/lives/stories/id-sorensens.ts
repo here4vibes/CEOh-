@@ -1,0 +1,110 @@
+import { life } from "../build";
+
+export const SORENSENS = life({
+  id: "id-talk-radio",
+  protagonist: "Brett Sorensen",
+  dossierTag: "TALK RADIO HOST",
+  householdName: "The Sorensens",
+  location: "Coeur d'Alene, ID",
+  tagline: "Morning talk radio host, 45. Evangelical. Moved his family from California in 2009. Ninety thousand listeners.",
+  description:
+    "Brett Sorensen sold cars in Fresno until the recession took the dealership. He moved his family to Coeur d'Alene, joined a Bible church and talked his way into a morning slot on a local AM station. He has five kids, a truck with 240,000 miles on it and listeners who call him like family.",
+  perspective:
+    "People up here feel like nobody listens to them. The coastal media laughs at them, and the local paper is down to four reporters. I give them a voice. If the show gets hot, it's because people are angry, and they've got reasons.",
+  closingAddendum:
+    "You were dealt a microphone in a place that felt ignored. The ratings paid for anger, and you learned exactly what the ratings wanted.",
+  seat: {
+    title: "The Host",
+    role: "Morning Talk Radio Host",
+    mode: "attn",
+    color: "#BF5F3F",
+    scoreLabel: "RATINGS",
+    dial: ["inform them", "inflame them"],
+    dialNote: "anger keeps them listening through the ad break",
+    board: "STATION",
+    firedTitle: "OFF THE AIR",
+    firedBody:
+      "The chain that owns the station replaced your show with a syndicated host from Florida who has never been to Idaho. He's angrier than you ever were, and his ratings are higher. Walt from Rathdrum calls him now.",
+    pressure: [
+      "The station manager, Doug Heller, says your book dipped for the second quarter in a row.",
+      "The chain is 'reviewing local programming.' Heller says to give them a reason to keep you.",
+    ],
+    ranks: [
+      ["Host", "a morning slot"],
+      ["Top of the Market", "billboards on I-90"],
+      ["Regional Network", "six stations in three states"],
+      ["National Syndication", "thirty markets"],
+      ["TV Contributor", "a cable news chair"],
+      ["Kingmaker", "candidates come to you first"],
+    ],
+    intro: [
+      "You're Brett Sorensen. It's 5:58 a.m. in a studio on the edge of Coeur d'Alene. The red light comes on in two minutes, and the phone lines are already blinking.",
+      "The lights on the wall are your listeners: loggers, retirees, young families from California and Washington, people who've always been here, and Walt from Rathdrum, who calls every single morning.",
+      "The station watches ratings. Your dial runs from informing them to inflaming them.",
+      "The paper cut its staff to four. For a lot of people up here, you are the news now.",
+    ],
+    introCta: "Go on the air ›",
+    actLabel: "ON AIR",
+    outLabel: "FALLOUT THIS BROADCAST",
+    fired: "Who pays for local news when anger pays better?",
+    ended: "You were the voice of North Idaho. What did North Idaho sound like before you started?",
+    people: [
+      ["the radio", "listens for the weather", "listens every morning", "angry after every show", "only trusts the show"],
+      ["the library", "checks out books every week", "worried about the board fight", "stopped going", "the library lost its levy"],
+      ["the doctor", "trusts the local doctor", "skeptical of the health board", "refused the vaccine", "died of COVID in the ICU"],
+      ["the neighbors", "helps them fix the fence", "argues about politics", "stopped speaking", "reported them to the sheriff"],
+      ["the school board", "goes to the meetings", "watches the clips", "shouts at the meetings", "the board member moved away"],
+      ["the baby", "delivered at the local hospital", "a longer drive to deliver", "ninety minutes to the nearest OB", "delivered on the highway"],
+    ],
+    turns: [
+      [
+        2010,
+        "THE HEALTH CARE LAW PASSES · THE LINES LIGHT UP",
+        ["Walk listeners through what it actually does", "Three calm hours on what's in the law and what isn't. The phones went quiet, and so did your ratings."],
+        ["Call it a takeover and take calls", "The phones lit up for a week. Your listeners believed it before a word of it took effect."],
+        "⚡",
+      ],
+      [
+        2013,
+        "WALT FROM RATHDRUM SAYS THE COUNTY IS HIDING SOMETHING",
+        ["Ask Walt for proof, on the air", "He didn't have any. He called back the next day anyway, a little quieter."],
+        ["Let Walt run — the lines are full", "Walt ran for twenty minutes. The county clerk started getting calls at home that night."],
+        "⚡",
+      ],
+      [
+        2016,
+        "A NATIONAL CHAIN BUYS THE STATION · IT SENDS TALKING POINTS",
+        ["Keep the show local", "You kept talking about potholes and fish counts. The chain sent a memo about 'alignment.'"],
+        ["Run their points to keep your slot", "You read the points as if they were yours. Within a year, so did your callers."],
+        "$",
+      ],
+      [
+        2020,
+        "MASK ORDERS · THE HEALTH BOARD MEETS TONIGHT",
+        ["Put the local doctors on the air", "Two ER doctors took calls for an hour. You lost a sponsor and gained a few thousand listeners you didn't expect."],
+        ["Call the board tyrants; pack the meeting", "Four hundred people packed the meeting, and the board dropped the order. The ICU at Kootenai Health filled in the fall."],
+        "⚡",
+      ],
+      [
+        2021,
+        "A HEALTH BOARD MEMBER FINDS A THREAT ON HER PORCH",
+        ["Condemn it by name, on the air", "You called it what it was. Walt hung up on you, live, for the first time in eight years."],
+        ["Say people are frustrated and move on", "'People are frustrated.' She resigned in the spring and moved to Spokane."],
+      ],
+      [
+        2022,
+        "THE LIBRARY BOARD IS DEBATING BOOKS",
+        ["Invite the librarian on", "The library director explained how books get chosen. Callers were polite. It was your lowest-rated segment of the year."],
+        ["Read the 'worst pages' on the air", "The next library board meeting needed two sheriff's deputies. The director quit in July."],
+        "⚡",
+      ],
+      [
+        2023,
+        "YOUR DAUGHTER IS DUE · HER HOSPITAL LOST ITS BABY DOCTORS",
+        ["Tell listeners why the doctors left", "You read their letter on the air: the new laws, the threats, the pay. You lost two sponsors and got one thank-you email, from your daughter's midwife."],
+        ["Blame outside agitators", "The lines lit up. Your daughter drove ninety minutes in labor to Coeur d'Alene. Your granddaughter arrived eleven minutes after they parked."],
+        "⚡",
+      ],
+    ],
+  },
+});

@@ -1,0 +1,111 @@
+import { life } from "../build";
+
+export const VILLARREALS = life({
+  id: "ship-channel",
+  protagonist: "Ray Villarreal",
+  dossierTag: "UNION PRESIDENT",
+  householdName: "The Villarreals",
+  location: "Pasadena, TX",
+  tagline: "Refinery operator, 51. Twenty-six years on the Houston Ship Channel. His father ran the same unit.",
+  description:
+    "Ray and Yolanda Villarreal own a brick house in Pasadena with a view of the flare stack. The refinery paid for the house, the truck and their daughter's nursing degree. Yolanda keeps an inhaler in every room for their grandson, Mateo. Ray's nephew, Adrián, just hired on at the plant.",
+  perspective:
+    "The refinery is the best job a man without a degree can get in Texas, and everybody here knows it. The union is why it's a good job. You don't bite the hand that feeds your family. But you don't pretend the air is fine, either.",
+  closingAddendum:
+    "You were dealt a good job in a place that pays for it in other ways. The members could vote. The people downwind couldn't.",
+  seat: {
+    title: "The Local President",
+    role: "President, Refinery Workers Local",
+    stat: "power",
+    statScale: 0.9,
+    sideStats: { fame: 0.018, money: 0.02 },
+    color: "#D9544D",
+    scoreLabel: "MEMBER SECURITY",
+    dial: ["everyone on the channel", "the members you have"],
+    dialNote: "the members vote; the new hires and the neighbors don't",
+    board: "MEMBERSHIP",
+    firedTitle: "VOTED OUT",
+    firedBody:
+      "The members voted you out for a challenger who promised no strikes. He signed the company's contract within a month, the one you wouldn't.",
+    pressure: [
+      "Guys are grumbling in the parking lot. Big Lou says they think you're going to get them locked out.",
+      "A challenger is collecting signatures for a recall. He's telling people you care more about outsiders than members.",
+    ],
+    ranks: [
+      ["Local President", "a desk at the hall and a truck"],
+      ["Chief Negotiator", "the company has your cell"],
+      ["District Director", "six locals on the channel"],
+      ["International VP", "a seat in Pittsburgh"],
+      ["Labor Board", "the governor's appointment"],
+      ["Company Advisor", "a consulting contract with the other side"],
+    ],
+    intro: [
+      "You're Ray Villarreal. The members just elected you president of the local, and the company's first offer is already on the table at the union hall on Red Bluff Road.",
+      "The lights on the wall are the east side of Houston: members, new hires, contractors, the families downwind, your nephew Adrián, and your grandson Mateo, who can't stop coughing on flare nights.",
+      "The members want their jobs and pensions safe. Your dial runs from everyone on the channel to the members you have.",
+      "Only some of the lights get a vote at the hall.",
+    ],
+    introCta: "Open the union hall ›",
+    actLabel: "SIGN",
+    outLabel: "FALLOUT THIS CONTRACT",
+    fired: "Why did protecting the members always seem to cost everyone who wasn't one?",
+    ended: "Your members kept their pensions. Who paid for the ones they kept?",
+    people: [
+      ["the contract", "one tier, full scale", "the lower tier", "a contractor at half pay", "no contract at all"],
+      ["the air", "fine most days", "flares at night", "an inhaler for the grandkid", "cancer in the family"],
+      ["the pension", "a full pension", "a 401(k) instead", "the plan was frozen", "no retirement"],
+      ["the house", "paid off in Pasadena", "the value stalled", "flooded in the hurricane", "moved away from the fence line"],
+      ["the job", "an operator for twenty years", "a turnaround contractor", "laid off in the downturn", "hurt on the job"],
+      ["the school", "a good district", "the district lost the tax money", "portable classrooms", "the school cut its nurse"],
+    ],
+    turns: [
+      [
+        2001,
+        "A TWO-TIER CONTRACT · NEW HIRES AT 70%",
+        ["Strike for one tier", "Six weeks on the picket line. One tier: everyone on the same scale."],
+        ["Take it — protect the members you have", "Two tiers. Every new hire since makes seventy cents on your dollar. Adrián will be one of them."],
+        "✎",
+      ],
+      [
+        2005,
+        "FIFTEEN DEAD IN TEXAS CITY",
+        ["Demand an independent safety audit", "The audit found forty problems. The company fixed some of them."],
+        ["Trade the safety demands for a raise", "A four percent raise. The safety demands went to a committee that never met."],
+        "✎",
+      ],
+      [
+        2009,
+        "TURNAROUND SEASON · NON-UNION CONTRACTORS AT HALF PAY",
+        ["Grieve every contractor hire", "Every grievance filed. Some of the work came back to the hall."],
+        ["Let it go — your members get the overtime", "The overtime was good. The contractors did the dirtiest work at half the pay."],
+      ],
+      [
+        2012,
+        "THE REFINERY WANTS A $40 MILLION SCHOOL-TAX BREAK",
+        ["Tell the school board the truth", "You told them what it would cost the district. They voted for it anyway."],
+        ["Pack the hearing in union shirts", "Union shirts filled the hearing. The district lost $40 million over ten years."],
+        "⚡",
+      ],
+      [
+        2017,
+        "HARVEY · A TANK LEAKS INTO THE NEIGHBORHOOD",
+        ["Tell reporters what you saw", "You told a reporter what leaked. The company threatened to sue, then dropped it."],
+        ["Say nothing — the plant restarts sooner", "The plant restarted in four days. The neighborhood's air readings were never made public."],
+      ],
+      [
+        2021,
+        "THE FREEZE · THE PLANT FLARES FOR A WEEK · MATEO CAN'T BREATHE",
+        ["Back the neighbors' lawsuit", "You backed the neighbors. The members asked whose side you're on. Yolanda said she knew."],
+        ["Sign the company's statement", "You signed the company's statement. Mateo spent two nights at Texas Children's."],
+        "✎",
+      ],
+      [
+        2024,
+        "EARLY RETIREMENT · TOP SENIORITY ONLY",
+        ["Hold out for everyone", "You held out for everyone. The deal fell apart, and the old guard stopped buying you coffee."],
+        ["Take it for the old guard", "The old guard retired with full benefits. Adrián's tier got nothing."],
+        "✎",
+      ],
+    ],
+  },
+});

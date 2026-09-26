@@ -20,7 +20,7 @@ export interface PresetOption {
   glyph: string;
   type: MoveType;
   pull: number; // 0..1, how aggressively this option pulls the dial
-  /** What happened after this specific choice; falls back to the seat's generic result line. */
+  /** What happened because of this choice, shown under the consequence numbers. */
   result?: string;
 }
 
@@ -51,8 +51,6 @@ export interface SeatConfig {
   dialNote: string;
   archetype: string;
   ranks: RankTier[];
-  resultCapture: string;
-  resultProtect: string;
   outLabel: string;
   /** Paragraphs shown on the intro screen before the first turn. */
   intro?: string[];

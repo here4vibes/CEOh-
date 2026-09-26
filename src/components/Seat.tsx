@@ -96,7 +96,7 @@ export function Seat({ cfg, onSeatComplete, onRestart, completeCta = "Play again
         diedIdx: result.deaths.map((d) => d.index),
         type: lead.type,
         label: lead.name,
-        resLine: lead.result ?? (lead.type === "capture" ? cfg.resultCapture : cfg.resultProtect),
+        resLine: lead.result ?? "",
       });
       if (afterRank > beforeRank) {
         setPromo(cfg.ranks[afterRank]);

@@ -1,0 +1,113 @@
+import { life } from "../build";
+
+export const TILLMANS = life({
+  id: "small-town-church",
+  protagonist: "Wade Tillman",
+  dossierTag: "SENIOR PASTOR",
+  householdName: "The Tillmans",
+  location: "Muscle Shoals, AL",
+  tagline: "Pastor, 47. Planted his church in a strip mall in 2004. It's four thousand people now, with a $12 million note.",
+  description:
+    "Wade and Leanne Tillman started Crossroads Church with forty folding chairs and a rented sound system. Their three kids grew up in the nursery. Leanne runs the Thursday food pantry, which fed more families last year than the year before. Wade still makes every hospital visit he can.",
+  perspective:
+    "When the plant closed and the paper folded, the church was what was left standing. People come to us for work, for groceries, for each other. Folks in Washington talk about towns like ours like we're a punchline. We're the only ones who still show up.",
+  closingAddendum:
+    "You were dealt the last room in town where everyone still came. Filling it and holding it together turned out to be different jobs.",
+  seat: {
+    title: "The Pastor",
+    role: "Senior Pastor",
+    mode: "attn",
+    stat: "fame",
+    statScale: 0.05,
+    sideStats: { money: 0.03 },
+    color: "#C9A96F",
+    scoreLabel: "ATTENDANCE",
+    dial: ["shepherd the flock", "grow the crowd"],
+    dialNote: "a room with an enemy fills fastest",
+    board: "ELDERS",
+    firedBody:
+      "The elders called a younger pastor from a Dallas megachurch. He moved the pulpit to a stage, the pantry to a website and an enemy to the center of every sermon. Attendance doubled by Easter.",
+    pressure: [
+      "Elder Dwayne Posey says the building fund is short again and wants to talk about 'vision.'",
+      "Three elders met at the Cracker Barrel without you. They're 'praying about the church's direction.'",
+    ],
+    ranks: [
+      ["Pastor", "forty folding chairs"],
+      ["Senior Pastor", "a sanctuary with your name on the plaque"],
+      ["Multi-Site Pastor", "your face on screens in three towns"],
+      ["Conference Speaker", "a book deal and a green room"],
+      ["Network Regular", "a Sunday-night cable segment"],
+      ["Movement Leader", "candidates ask for your blessing"],
+    ],
+    intro: [
+      "You're Wade Tillman. It's the Sunday the new sanctuary opens: four thousand seats, a $12 million note, and cars backed up onto Woodward Avenue before the first service.",
+      "The lights on the wall are the town, in your pews and not yet: Brother Hollis, 69, who hasn't missed a Sunday since 1971; the Guatemalan families who came for the poultry plant in Russellville; everyone who gets their news from the church Facebook group.",
+      "The elders watch attendance, because attendance pays the note. Your dial runs from shepherding the flock to growing the crowd.",
+      "They trust you more than anyone on television. That's the responsibility. It's also the leverage.",
+    ],
+    introCta: "Step up to the pulpit ›",
+    actLabel: "PREACH",
+    outLabel: "FALLOUT THIS SUNDAY",
+    fired: "What would it take for a full church not to need an enemy?",
+    ended: "The pews are full. Is the town more of a community than when you started?",
+    people: [
+      ["Sunday", "sits with the same families every week", "watches from the overflow room", "watches the stream at home", "only sees the clips"],
+      ["the neighbors", "brings a casserole when someone's sick", "waves from the truck", "suspicious of the new family", "won't speak to the family across the street"],
+      ["the news", "reads the TimesDaily", "hears it from church friends", "gets it from the Facebook group", "believes whatever the group shares"],
+      ["the pantry", "volunteers every Thursday", "donates at Christmas", "stopped volunteering", "the pantry lost its volunteers"],
+      ["the family", "Thanksgiving together", "argues at Thanksgiving", "skipped Thanksgiving", "hasn't spoken to his sister in two years"],
+      ["the vote", "reads both sides", "votes the way the church votes", "votes angry", "believes the election was stolen"],
+    ],
+    turns: [
+      [
+        2008,
+        "THE SANCTUARY IS FULL · THE ELDERS WANT A SECOND CAMPUS",
+        ["Plant a sister church with its own pastor", "The Florence church grew on its own terms. People there call their pastor by his first name. Nobody there knows yours."],
+        ["Stream your sermon to a satellite campus", "Your face went up on a screen in Florence. A small Baptist church down the road lost half its members by summer."],
+        "▶",
+      ],
+      [
+        2012,
+        "YOUR FIERIEST SERMON CLIP HITS A MILLION VIEWS",
+        ["Keep Sunday for the people in the room", "Growth slowed to a trickle. Brother Hollis said it was the best sermon he'd heard in years. He'd been there."],
+        ["Cut a new clip for Facebook every week", "The clips spread across three states. Strangers started telling you they felt like they knew you."],
+        "▶",
+      ],
+      [
+        2016,
+        "A CANDIDATE ASKS FOR FIVE MINUTES OF YOUR PULPIT",
+        ["Pray for him from the pews, not the pulpit", "A third of the congregation grumbled. Two big givers moved to First Baptist."],
+        ["Give him the pulpit — your people want it", "The sanctuary had never been so full. Two families who'd been members for twenty years quietly stopped coming."],
+        "⚡",
+      ],
+      [
+        2018,
+        "A RUMOR IN THE CHURCH GROUP ABOUT THE GUATEMALAN FAMILIES",
+        ["Name the rumor from the pulpit and end it", "The rumor died that Sunday, and so did forty memberships. The Guatemalan families kept coming to Leanne's pantry."],
+        ["Let it run — confronting it would split the church", "The rumor ran for a month. The Guatemalan families stopped coming to the pantry. Leanne noticed first."],
+        "⚡",
+      ],
+      [
+        2020,
+        "THE STATE LIMITS GATHERINGS · BROTHER HOLLIS IS 81",
+        ["Go online; take communion to Hollis's porch", "You drove communion to forty porches. Attendance never fully came back. Hollis turned 83 and asked when the choir would sing again."],
+        ["Open the doors — faith over fear", "Easter drew nine hundred people. Brother Hollis sat in his usual seat. You preached his funeral in May."],
+        "⚡",
+      ],
+      [
+        2022,
+        "A CABLE NETWORK OFFERS A WEEKLY SLOT · IT WOULD PAY THE NOTE",
+        ["Turn it down — the congregation is enough", "The note will take fifteen more years. The people who come on Sunday come to hear you, not to see you."],
+        ["Take it — the building needs it", "A third of the note was paid down in a year. Leanne told you two families quit the pantry after something you said on air."],
+        "▶",
+      ],
+      [
+        2024,
+        "THE DENOMINATION SPLITS · YOUR CHURCH HAS TO CHOOSE",
+        ["Keep both sides at one table", "It was harder and smaller, and it was still one church. Brother Hollis's grandson leads the singing now."],
+        ["Name the enemy and keep the bigger half", "You kept the bigger half. The other half meets in the old strip mall. The town has two churches now, and they don't speak."],
+        "⚡",
+      ],
+    ],
+  },
+});
