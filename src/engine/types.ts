@@ -20,6 +20,8 @@ export interface PresetOption {
   glyph: string;
   type: MoveType;
   pull: number; // 0..1, how aggressively this option pulls the dial
+  /** What happened after this specific choice; falls back to the seat's generic result line. */
+  result?: string;
 }
 
 export interface SeatTurn {
