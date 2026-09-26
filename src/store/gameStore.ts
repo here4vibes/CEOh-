@@ -5,12 +5,34 @@ import { airMove, boardDelta, fastForwardFired, type AirResult } from "../engine
 import { drawBackground, freshCharacter, replay } from "../engine/replay";
 import { SEATS } from "../engine/seats";
 import { FIRE } from "../engine/constants";
-import { loadSave, writeSave } from "./persistence";
+import { loadDealt, loadSave, writeDealt, writeSave } from "./persistence";
+import { BACKGROUNDS } from "../engine/backgrounds";
 import type { BackgroundProfile, Character, Household, MoveLogEntry, PresetOption, SeatRunState, StatKey } from "../engine/types";
 
 function addStat(character: Character, key: StatKey, amt: number): Character {
   const cap = key === "money" ? 99 : 100;
   return { ...character, [key]: Math.min(cap, character[key] + amt) };
+}
+
+function backgroundForSeed(seed: number): BackgroundProfile {
+  const rng = mulberry32(seed);
+  buildPopulation(rng);
+  return drawBackground(rng);
+}
+
+/**
+ * Free play deals without replacement: reroll the seed until it lands on a life this browser hasn't
+ * seen, so every life comes up once before any repeats. The seed still fully determines the run.
+ */
+function dealFreshSeed(): number {
+  const valid = new Set(BACKGROUNDS.map((b) => b.id));
+  let dealt = loadDealt().filter((id) => valid.has(id));
+  if (dealt.length >= valid.size) dealt = [];
+  const seen = new Set(dealt);
+  let seed = randomSeed();
+  for (let i = 0; i < 2000 && seen.has(backgroundForSeed(seed).id); i++) seed = randomSeed();
+  writeDealt([...dealt, backgroundForSeed(seed).id]);
+  return seed;
 }
 
 function freshRun(): SeatRunState {
@@ -60,10 +82,10 @@ export const useGameStore = create<GameStore>((set, get) => ({
       });
       return;
     }
-    get().newGame(randomSeed());
+    get().newGame();
   },
 
-  newGame: (seed = randomSeed()) => {
+  newGame: (seed = dealFreshSeed()) => {
     const rng = mulberry32(seed);
     const population = buildPopulation(rng);
     const background = drawBackground(rng);

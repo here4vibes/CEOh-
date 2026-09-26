@@ -34,3 +34,23 @@ export function clearSave(): void {
     // ignore
   }
 }
+
+const DEALT_KEY = "ceoh:dealt:v1";
+
+/** Background ids this browser has already been dealt in free play, oldest first. */
+export function loadDealt(): string[] {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(DEALT_KEY) ?? "[]");
+    return Array.isArray(parsed) ? parsed.filter((x): x is string => typeof x === "string") : [];
+  } catch {
+    return [];
+  }
+}
+
+export function writeDealt(ids: string[]): void {
+  try {
+    localStorage.setItem(DEALT_KEY, JSON.stringify(ids));
+  } catch {
+    // storage unavailable — dealing falls back to plain random
+  }
+}
