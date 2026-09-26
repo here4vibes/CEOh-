@@ -1,0 +1,111 @@
+import { life } from "../build";
+
+export const BRANDTS = life({
+  id: "ks-tax-experiment",
+  protagonist: "Greg Brandt",
+  dossierTag: "STATE SENATOR",
+  householdName: "The Brandts",
+  location: "Hutchinson, KS",
+  tagline: "State senator, 55. Owns a crop insurance agency and chairs the tax committee. His wife teaches second grade.",
+  description:
+    "Greg Brandt grew up on a wheat farm near Hutchinson and sold crop insurance for twenty years before running for office, mostly because he was tired of complaining about taxes at Rotary. He's a deacon at Trinity Lutheran. His wife, Janet, has taught second grade in the same building for twenty-six years.",
+  perspective:
+    "Every dollar the state takes is a dollar a family doesn't get to spend or a business doesn't get to invest. Cut taxes and growth pays for itself. I believed that, and so did most of the people who voted for me. You don't get anywhere in life being afraid to try something.",
+  closingAddendum:
+    "You were dealt a seat and an idea almost everyone around you believed. Your wife's classroom found out what it cost before the budget office did.",
+  seat: {
+    title: "The Tax Chair",
+    role: "Chair, Senate Tax Committee",
+    stat: "power",
+    statScale: 0.9,
+    sideStats: { fame: 0.018, money: 0.02 },
+    color: "#BFA33F",
+    scoreLabel: "TAX CUTS",
+    dial: ["fund the schools", "keep the cuts"],
+    dialNote: "the cut pays for itself, the governor says",
+    board: "CAUCUS",
+    firedTitle: "PRIMARIED",
+    firedBody:
+      "An out-of-state group spent $400,000 on a primary challenger who called you a tax-raiser. He won by nine hundred votes and voted for every cut that came before him.",
+    pressure: [
+      "The majority leader says your vote on the budget bill 'is being watched.'",
+      "A PAC bought TV ads in your district calling you a tax-raiser. Janet saw one in the dentist's waiting room.",
+    ],
+    ranks: [
+      ["State Senator", "a seat and a desk"],
+      ["Committee Chair", "the tax bills go through you"],
+      ["Majority Leader", "the whole agenda"],
+      ["Governor's Pick", "the budget office"],
+      ["Congressman", "a seat in Washington"],
+      ["Think Tank Fellow", "the model goes to other states"],
+    ],
+    intro: [
+      "You're Greg Brandt. The governor calls it 'a real live experiment': cut income taxes to the bone and watch Kansas boom. Your committee writes the bill.",
+      "The lights on the wall are Kansans: teachers, highway crews, small business owners and kids in schools the budget pays for, including twenty-two second-graders in Janet's classroom.",
+      "Your caucus watches whether you keep the cuts. Your dial runs from funding the schools to keeping the cuts.",
+      "You believe in it. So do most of the people who elected you. That's what makes it an experiment.",
+    ],
+    introCta: "Gavel in the committee ›",
+    actLabel: "VOTE",
+    outLabel: "FALLOUT THIS SESSION",
+    fired: "Who should have to prove an idea works before a whole state tries it?",
+    ended: "The cuts held. Did the boom come?",
+    people: [
+      ["the school", "a five-day week", "bigger classes", "the year ended early", "the district closed a school"],
+      ["the road", "smooth", "potholes", "a bridge with a weight limit", "a detour for two years"],
+      ["the paycheck", "a state job with a raise", "a state job, no raise", "hours cut", "laid off"],
+      ["the taxes", "paying their share", "sales tax up", "property tax up", "paying more than the business owner next door"],
+      ["the kids", "a good school, a good future", "fewer teachers", "no art or music", "moved to Missouri for the schools"],
+      ["the hospital", "a hospital in town", "cuts at the hospital", "the ER closed at night", "the hospital closed"],
+    ],
+    turns: [
+      [
+        2012,
+        "NO STATE INCOME TAX ON BUSINESS PROFITS",
+        ["Vote for a smaller cut that's paid for", "A smaller cut passed with your amendment. The governor called you 'timid' at a Rotary lunch."],
+        ["Vote for the full cut — let it work", "The full cut passed. Two hundred thousand business owners stopped paying state income tax, including you."],
+      ],
+      [
+        2013,
+        "THE BUDGET IS $300 MILLION SHORT",
+        ["Delay the next round of cuts", "The next round was delayed a year. The governor's allies started saying the word 'primary.'"],
+        ["Cut spending to match", "Spending was cut across the board. Road maintenance was deferred, and class sizes grew by three."],
+        "✂",
+      ],
+      [
+        2014,
+        "MOODY'S DOWNGRADES KANSAS",
+        ["Say out loud that it isn't working", "You said it on the Senate floor. Your caucus stopped inviting you to Tuesday breakfasts."],
+        ["Say it needs more time", "'Growth takes time.' The rating fell again the next year."],
+        "⚡",
+      ],
+      [
+        2015,
+        "THE HIGHWAY FUND COULD COVER THE HOLE",
+        ["Vote against the transfer", "The transfer passed without you. The highway department delayed forty projects."],
+        ["Vote for the transfer", "The highway fund covered the hole. The bridge on U.S. 50 got posted for weight limits."],
+        "✂",
+      ],
+      [
+        2015,
+        "JANET'S DISTRICT MAY END THE YEAR EARLY",
+        ["Vote to restore school funding", "The schools got an emergency patch. A PAC mailer called you a tax-and-spend liberal. Janet framed it."],
+        ["Hold the line — the court overstepped", "Janet's district ended the year eleven days early. She spent them tutoring for free at the public library."],
+      ],
+      [
+        2017,
+        "A BIPARTISAN REPEAL · THE GOVERNOR VETOES IT",
+        ["Vote to override", "The override passed by three votes. Yours was one of them. The experiment was over."],
+        ["Vote to sustain the veto", "The override passed without you. The governor thanked you by name in his statement."],
+        "✎",
+      ],
+      [
+        2024,
+        "A NEW FLAT-TAX PLAN · THE CAUCUS WANTS CO-SPONSORS",
+        ["Tell them what you learned in 2017", "You told them. The bill died in committee, and two freshmen asked you to lunch."],
+        ["Sign on — it's a different plan this time", "You co-sponsored it. Staffers from four other states called your office to ask how it went last time."],
+        "✎",
+      ],
+    ],
+  },
+});

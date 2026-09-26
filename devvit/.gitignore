@@ -1,0 +1,4 @@
+node_modules/
+dist/
+# webroot is the built game — checked in for devvit upload to work without a CI build step
+# To rebuild: npm run build:game from devvit/

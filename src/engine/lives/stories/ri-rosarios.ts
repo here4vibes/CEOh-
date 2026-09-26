@@ -1,0 +1,111 @@
+import { life } from "../build";
+
+export const ROSARIOS = life({
+  id: "ri-creator",
+  protagonist: "Carmen Rosario",
+  dossierTag: "CONTENT CREATOR",
+  householdName: "The Rosarios",
+  location: "Providence, RI",
+  tagline: "Content creator, 26. 400,000 followers. Lives with her mother and grandmother on Broad Street.",
+  description:
+    "Carmen Rosario started posting makeup tutorials from a CVS parking lot in 2017. Now brands pay her more in a month than her mother made in a year cleaning offices downtown. Her grandmother still doesn't understand what she does. Her little cousin, Dayana, watches everything she posts.",
+  perspective:
+    "Nobody ever handed my family anything. The algorithm doesn't care where you're from or who your father is. It only cares whether people watch. That's the first fair game anyone in my family has gotten to play, and I'm winning it.",
+  closingAddendum:
+    "You were dealt a game that was finally fair to you. It paid for attention, and it didn't care how you got it.",
+  seat: {
+    title: "The Creator",
+    role: "Content Creator",
+    mode: "attn",
+    color: "#E05C9B",
+    scoreLabel: "VIEWS",
+    dial: ["say what's true", "say what spreads"],
+    dialNote: "the algorithm pays for outrage and envy",
+    board: "SPONSORS",
+    firedTitle: "FORGOTTEN",
+    firedBody:
+      "The algorithm moved on. A creator from Miami with your exact look and none of your hesitation took your sponsors in a month. Her followers bought everything she sold them.",
+    pressure: [
+      "Your manager, Jess, says your reach is down 30% and the algorithm 'wants more of you.'",
+      "Two sponsors didn't renew. Jess sent a list of the trends you're 'missing.'",
+    ],
+    ranks: [
+      ["Creator", "a ring light and a dream"],
+      ["Influencer", "free product every week"],
+      ["Brand Partner", "your own discount code"],
+      ["Verified", "a blue check and a manager"],
+      ["Founder", "your own product line"],
+      ["Celebrity", "a Super Bowl ad"],
+    ],
+    intro: [
+      "You're Carmen Rosario. It's 11 p.m., your ring light is the brightest thing on Broad Street, and a teeth-whitening brand just slid into your DMs with an offer.",
+      "The lights on the wall are your followers: girls in Providence, Paterson and Lawrence who want your life, their mothers who worry about them, and your cousin Dayana, who is thirteen.",
+      "Your sponsors watch views. Your dial runs from saying what's true to saying what spreads.",
+      "The fastest-growing accounts all sell something: a product, a feeling, an enemy. Everybody knows it. Everybody does it anyway.",
+    ],
+    introCta: "Hit record ›",
+    actLabel: "POST",
+    outLabel: "FALLOUT THIS POST",
+    fired: "What if attention weren't the only currency a kid from Broad Street could earn?",
+    ended: "You made it out. What did the girls watching you learn to want?",
+    people: [
+      ["the feed", "follows friends", "follows creators", "follows the angriest ones", "lives in the comments"],
+      ["the mirror", "likes what she sees", "compares herself sometimes", "filters every photo", "stopped eating"],
+      ["the money", "saves what she earns", "bought the whitening kit", "lost money on the coin", "in debt to the betting app"],
+      ["the friends", "sees friends in person", "texts more than she sees them", "only talks online", "alone in her room every night"],
+      ["the news", "reads a couple of sources", "gets it from creators", "gets it from drama accounts", "believes whatever goes viral"],
+      ["the sleep", "phone off at ten", "phone under the pillow", "scrolling until two", "hasn't slept a full night in months"],
+    ],
+    turns: [
+      [
+        2018,
+        "A TEETH-WHITENING BRAND OFFERS $800",
+        ["Only what you'd actually use", "Your income stayed small, and your followers trusted you. Your mother asked when the money would come."],
+        ["Take every deal that pays", "Every deal, every week. Your feed became an ad, and engagement went up anyway."],
+        "$",
+      ],
+      [
+        2019,
+        "FILTERED 'AFTER' PHOTOS GET FIVE TIMES THE VIEWS",
+        ["Post your real skin", "Real skin, no filter. A girl in Paterson messaged to say thank you. It got 9,000 likes."],
+        ["Filter everything", "Filters on everything. Your followers started asking which procedures you'd had."],
+        "✦",
+      ],
+      [
+        2020,
+        "A 'DETOX TEA' OFFERS $20,000",
+        ["Pass — it's a laxative", "You passed. The creator who took the deal bought a house."],
+        ["Post it with #ad", "Posted, with #ad in small print. Two followers ended up in the ER, dehydrated."],
+        "$",
+      ],
+      [
+        2021,
+        "YOUR VIDEO ABOUT ANOTHER CREATOR BLOWS UP",
+        ["Take it down and apologize", "You took it down and apologized. You lost 20,000 followers in a weekend."],
+        ["Make a part two", "Part two hit four million views. She stopped posting after the threats started."],
+        "⚡",
+      ],
+      [
+        2022,
+        "A CRYPTO APP WANTS YOU TO PROMOTE A COIN",
+        ["Decline", "You declined. The coin crashed six months later."],
+        ["Tell followers to get in early", "Your followers put in about $2 million. You'd been paid in coins and sold at the top."],
+        "$",
+      ],
+      [
+        2023,
+        "RAGE CONTENT OUTPERFORMS MAKEUP · DAYANA IS WATCHING",
+        ["Stay in your lane", "Your views fell by half. Dayana still asks you to teach her winged liner."],
+        ["Pick a side and go loud", "Your views tripled, and your comments became a war zone. Dayana started posting too. She copies your captions word for word."],
+        "⚡",
+      ],
+      [
+        2024,
+        "A SPORTS-BETTING APP OFFERS SEVEN FIGURES",
+        ["Walk away", "You walked away, and Jess dropped you. You still post, for smaller money and a smaller crowd, and you sleep."],
+        ["Sign it — your followers are adults", "You signed. Most of your followers are adults. Dayana is fifteen and has a login."],
+        "$",
+      ],
+    ],
+  },
+});

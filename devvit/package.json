@@ -1,0 +1,19 @@
+{
+  "name": "ceoh-devvit",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "login": "devvit login",
+    "build:game": "vite build --config ../vite.devvit.config.ts",
+    "upload": "tsc -p tsconfig.json && devvit upload",
+    "deploy": "npm run build:game && npm run upload",
+    "dev": "devvit playtest"
+  },
+  "dependencies": {
+    "@devvit/public-api": "^0.12.0"
+  },
+  "devDependencies": {
+    "typescript": "~5.8.0"
+  }
+}
