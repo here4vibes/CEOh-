@@ -1,0 +1,68 @@
+import type { SeatPeople } from "./types";
+
+export const NORTHEAST_PEOPLE: SeatPeople = {
+  "ct-newspapers": [
+    ["the paper", "reads it every morning", "reads it online, sometimes", "sees headlines in the feed", "the paper stopped covering their town"],
+    ["the council", "knows what the council voted", "hears about it later", "finds out from rumors", "no idea who's on the council"],
+    ["the school budget", "went to the hearing", "read the summary", "saw an angry post about it", "didn't know there was a vote"],
+    ["local elections", "votes every local race", "votes when there's news", "skips the ones nobody covers", "stopped voting locally"],
+    ["the obituaries", "reads them to keep up", "sees them on Facebook", "misses most of them", "found out a friend died months later"],
+    ["the facts", "trusts the local reporter by name", "trusts the paper, mostly", "trusts whatever is shared", "trusts no one"],
+  ],
+  "me-home-care": [
+    ["the care", "the same aide every morning", "a new aide every month", "visits cut short", "nobody came today"],
+    ["the aide's wage", "a living wage", "$15 an hour", "unpaid drive time", "quit for the warehouse"],
+    ["the aide's hours", "full-time with benefits", "part-time, split shifts", "on an app, no benefits", "no steady work"],
+    ["getting up", "helped out of bed at eight", "helped up at eleven", "waits all morning", "fell and waited for hours"],
+    ["the family", "visits on weekends", "calls from Portland", "can't take more time off", "moved Mom to a home two hours away"],
+    ["the aide's own kids", "home by dinner", "a neighbor watches them", "the oldest watches the youngest", "the kids are on their own"],
+  ],
+  "ma-enrollment": [
+    ["the application", "admitted with full aid", "admitted with a gap", "waitlisted", "never applied"],
+    ["the loans", "graduated debt-free", "$20,000 in loans", "$60,000 in loans", "dropped out owing $40,000"],
+    ["the parents", "comfortable", "took a home equity loan", "co-signed private loans", "defaulted as co-signers"],
+    ["the first job", "a job in their field", "a job outside their field", "working at a coffee shop to pay the loans", "moved back home"],
+    ["the scholarship", "a full ride", "merit aid, not need-based", "aid cut after freshman year", "left after one semester"],
+    ["the neighborhood", "kids from here get in", "one or two a year", "none in the last five years", "nobody from here applies anymore"],
+  ],
+  "nh-recovery": [
+    ["recovery", "two years sober", "sober, barely", "relapsed", "died of an overdose"],
+    ["treatment", "stayed until ready", "discharged on day 28", "no bed available", "no treatment at all"],
+    ["the family", "they visit every Sunday", "they call when they can", "they've stopped calling", "they buried him"],
+    ["the job", "back at work", "a part-time job", "fired after the relapse", "no work"],
+    ["the insurance", "covered in full", "denied after 28 days", "billed for urine tests", "no coverage"],
+    ["the housing", "an apartment of their own", "a sober house", "a friend's couch", "living in a tent by the river"],
+  ],
+  "nj-motels": [
+    ["the room", "a clean room with heat", "a room with a broken heater", "mold on the ceiling", "locked out"],
+    ["the kids", "catch the school bus on time", "miss the bus some days", "switched schools twice", "haven't been to school in months"],
+    ["the apartment search", "found an apartment", "on a waiting list", "no landlord will call back", "gave up looking"],
+    ["the job", "a steady job nearby", "a job two buses away", "lost the job after the move", "no work"],
+    ["the food", "a hot plate and groceries", "fast food most nights", "the food pantry", "skipping meals"],
+    ["the stay", "a week, then home", "three months", "a year and a half", "living in the car in the lot"],
+  ],
+  "pa-fracking": [
+    ["the water", "clean from the well", "tastes different", "the color of tea", "buying bottled water for eleven years"],
+    ["the lease", "royalty checks every month", "checks shrinking with the deductions", "never got a check", "the lease isn't worth the damage"],
+    ["the sleep", "quiet nights", "trucks all night", "the compressor hums", "sleeps in the basement"],
+    ["the health", "healthy", "headaches and nosebleeds", "a child's rash that won't go away", "cancer in the family"],
+    ["the neighbors", "friends on both sides", "arguing about the lease", "not speaking", "moved away"],
+    ["the farm", "a family farm, still farming", "a well pad in the pasture", "the cattle got sick", "sold the farm"],
+  ],
+  "ri-creator": [
+    ["the feed", "follows friends", "follows creators", "follows the angriest ones", "lives in the comments"],
+    ["the mirror", "likes what she sees", "compares herself sometimes", "filters every photo", "stopped eating"],
+    ["the money", "saves what she earns", "bought the teeth kit", "lost money on the coin", "in debt to the betting app"],
+    ["the friends", "sees friends in person", "texts more than she sees them", "only talks online", "alone in her room every night"],
+    ["the news", "reads a couple of sources", "gets it from creators", "gets it from drama accounts", "believes whatever goes viral"],
+    ["the sleep", "phone off at ten", "phone under the pillow", "scrolling until two", "hasn't slept a full night in months"],
+  ],
+  "vt-hospital": [
+    ["the ER", "fifteen minutes away", "a longer wait", "transferred to Burlington", "died on the way to Burlington"],
+    ["the birth", "delivered at St. J", "a long drive in labor", "delivered in the car", "a stillbirth after the long drive"],
+    ["the bill", "covered", "a payment plan", "in collections", "the truck was repossessed"],
+    ["the nurse's job", "staff nurse for twenty years", "shifts cut", "laid off", "moved to New Hampshire for work"],
+    ["mental health", "a counselor in town", "a six-week wait", "a bed four hours away", "no help came in time"],
+    ["getting old", "the local doctor knows them", "a new doctor every visit", "a video visit, bad connection", "moved away to be near a hospital"],
+  ],
+};

@@ -2,6 +2,7 @@
 import { BACKGROUNDS } from "../src/engine/backgrounds";
 import { SEATS } from "../src/engine/seats";
 import { TURN_RESULTS } from "../src/engine/results";
+import { SEAT_PEOPLE } from "../src/engine/people";
 
 const STATES = "AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY".split(" ");
 
@@ -18,9 +19,11 @@ for (const b of BACKGROUNDS) {
     cfg.turns.forEach((t, i) => {
       if (t.o.some((o) => !o.result)) problems.push(`${s}: turn ${i + 1} (${t.y}) is missing a result line`);
     });
+    if (s !== "ceo" && s !== "politician" && (SEAT_PEOPLE[s]?.length ?? 0) < 6) problems.push(`${s}: needs at least 6 household situations of its own`);
     if ((TURN_RESULTS[s]?.length ?? 0) !== cfg.turns.length) problems.push(`${s}: ${TURN_RESULTS[s]?.length ?? 0} result pairs for ${cfg.turns.length} turns`);
   }
 }
+for (const id of Object.keys(SEAT_PEOPLE)) if (!SEATS[id]) problems.push(`people for unknown seat "${id}"`);
 for (const id of Object.keys(TURN_RESULTS)) if (!SEATS[id]) problems.push(`results for unknown seat "${id}"`);
 if (new Set(BACKGROUNDS.map((b) => b.id)).size !== BACKGROUNDS.length) problems.push("duplicate background ids");
 for (const st of STATES) if (!byState.has(st)) problems.push(`no life in ${st}`);

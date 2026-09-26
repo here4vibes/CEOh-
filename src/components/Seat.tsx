@@ -390,7 +390,7 @@ export function Seat({ cfg, onSeatComplete, onRestart, completeCta = "Play again
                 <div className="died-label">{cfg.outLabel}</div>
                 {cons.died.slice(0, 4).map((e, k) => (
                   <div className="died-line" key={k}>
-                    <span className="died-name">{e.name}</span> — now {e.line}.
+                    <span className="died-name">{e.name}</span> — {e.line}.
                   </div>
                 ))}
                 {cons.died.length > 4 && <div className="died-more">+{cons.died.length - 4} more.</div>}
